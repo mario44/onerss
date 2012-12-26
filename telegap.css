@@ -10,7 +10,7 @@ h4 {border:none; padding:0;margin:0; color:#000;}
 p {	margin: 0 0 20px;}
 #pagewrap {max-width: 98%;margin: 0 auto;}
 .wrapper {overflow: hidden;}
-#menu {padding:5px 0;}
+#menu {}
 div.arty {}
 div.art {padding:1.5% 3%; min-height:50px;background:#fff;}
 a.title {color:#258; font-size:102%; font-weight:bold; margin-top:2%;}

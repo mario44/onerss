@@ -2,7 +2,35 @@
 function korekta_link(link,content)
 function szukaj_img(link,content)
 */
-
+   function zgas() {document.getElementById("feeddiv").style.opacity='0.5';}
+   	function zapal(){document.getElementById("feeddiv").style.opacity='1.0';}
+   	function kasuj(){document.getElementById("feeddiv").innerHTML='';}
+   	function scroll() {window.scrollTo(0,0)}
+   	function koniec() {window.scrollTo(0,0)}
+	
+	
+	
+	function viewInfoKorki(raw){
+		document.getElementById('feeddiv').innerHTML+=raw;
+	}
+    
+    
+ 	function viewInfo(){
+ 		zgas();
+		var html='<div class="auto">';
+			html+='<img src="http://www.yr.no/place/Poland/West_Pomerania/Szczecin~7530840/avansert_meteogram.png" /><br />';
+		html+='</div>';
+		kasuj();
+		document.getElementById("feeddiv").innerHTML=html;
+		zapal();
+var script=document.createElement('SCRIPT');
+script.type='text/javascript';
+script.src='http://www.wi.zut.edu.pl/cdn/json/korki.json.php?callback=viewInfoKorki&co=czas&jak=tabela&format=joomla';
+document.getElementsByTagName('head')[0].appendChild(script);
+		
+ 	}   	
+	
+	
 function popup_open(ten) {
 	return false;
 }	

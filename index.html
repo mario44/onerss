@@ -123,30 +123,14 @@ function opiszID(){
     
     
     
-	function viewInfoKorki(raw){
-		document.getElementById('feeddiv').innerHTML+=raw;
-	}
-    
-    
- 	function viewInfo(){
- 		kasuj();
-		var html='<div class="auto">';
-			html+='<img src="http://www.yr.no/place/Poland/West_Pomerania/Szczecin~7530840/avansert_meteogram.png" /><br />';
-		html+='</div>';
-		document.getElementById("feeddiv").innerHTML=html;
-var script=document.createElement('SCRIPT');
-script.type='text/javascript';
-script.src='http://www.wi.zut.edu.pl/cdn/json/korki.json.php?callback=viewInfoKorki&co=czas&jak=tabela&format=joomla';
-document.getElementsByTagName('head')[0].appendChild(script);
-		
- 	}   
+
     
     
     
     
     function pokazFEED(id){
     	document.getElementById("menu").style.display="none";
-    	kasuj();
+    	
     	//var html='';
     	//html+='<div class="arty"><div class="art">Szczecin moje miasto</div></div>';
     	//document.getElementById("feeddiv").innerHTML=html;
@@ -171,6 +155,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
     	
  //=========================================================================   	
     function displayfeed(result){
+	zgas();
 	var title=result.feed.title || 'Portal';
 	var id=czytajID();
 	var sekcja=sekcje[id];
@@ -192,14 +177,12 @@ document.getElementsByTagName('head')[0].appendChild(script);
 		rssoutput+='</div>';
 	}
 	rssoutput+='</div>';
+	kasuj();
 	document.getElementById("feeddiv").innerHTML+=rssoutput;
+	zapal();
     }
 // =================================================================	
-    function zgas() {document.getElementById("feeddiv").style.opacity='0.5';}
-   	function zapal(){document.getElementById("feeddiv").style.opacity='1.0';}
-   	function kasuj(){document.getElementById("feeddiv").innerHTML='';}
-   	function scroll() {window.scrollTo(0,0)}
-   	function koniec() {window.scrollTo(0,0)}
+ 
  
 	
  </script>
@@ -213,7 +196,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
   
   <div><a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn">Menu</a> &nbsp; <b> PhoneGap test cordova</b></div>
   
-   <div id="menu" style="display:none;"> 
+   <div id="menu" style="display:none; position:fixed; left:0; bottom:48px; background:#888; padding:0; z-index:2;"> 
   	<a href="javascript:void(0);" onClick="pokazFEED(0);" class="btn btn-info">Szczecin</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(2);" class="btn btn-primary">InfoTech</a>
@@ -224,11 +207,8 @@ document.getElementsByTagName('head')[0].appendChild(script);
   	<a href="javascript:void(0);" onClick="pokazFEED(7);" class="btn btn-inverse">Portale</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(8);" class="btn btn-inverse">Allegro</a>	
  	<a href="javascript:void(0);" onClick="viewInfo();"       class="btn ">InfoSzczecin</a>	
- 	
  	<a href="javascript:void(0);" onClick="deviceInfo();"       class="btn btn-primary">device Info</a>
  	<a href="javascript:void(0);" onClick="koniec();"       class="btn btn-primary">Koniec</a>
- 	
- 	
   </div>
   
   <div id="test" style="display:block; padding:0.5em; border:1px solid gray; background:#eee;"></div>
@@ -238,7 +218,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
  <span class="pull-right"><a href=javascript:void(0);" onClick="scroll();" class="btn btn-info btn-small">menu &#8657; top</a></span>
    
 
-<div style="position:fixed; left:0px; bottom:0px; background:#555; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;">
+<div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;">
  	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
  	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
