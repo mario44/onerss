@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="telegap.css">
-    	<title>PhoneGap Device Ready Example</title>
+    	<title>OneRSS 2</title>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
  	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
@@ -18,24 +18,58 @@
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
         var id=czytajID();
-        pokazSzczecin(id);
+        pokazFEED(id);
 	//document.getElementById('test').innerHTML+='onLoad<br />';
 	
     }
 
 function czytajID(){
-	var id1=window.localStorage.getItem('__id__1');
-	var id=id1;
+	var id=window.localStorage.getItem('__id__1');
+	moveID(-1);
 	if (id) return id; else return 0;
 }
 
 function zapiszID(id){
-	var id1=window.localStorage.getItem('__id__1');
-	var id2=window.localStorage.getItem('__id__2');
+	moveID(1);
 	window.localStorage.setItem('__id__1',id);
-	window.localStorage.setItem('__id__2',id1);
 }
 
+function moveID(kier){
+	var id1=window.localStorage.getItem('__id__1');
+	var id2=window.localStorage.getItem('__id__2');
+	var id3=window.localStorage.getItem('__id__3');
+	if (kier>0){
+		window.localStorage.setItem('__id__1',id2);
+		window.localStorage.setItem('__id__2',id3);
+		window.localStorage.setItem('__id__3',id1);
+	}	
+	if (kier<0){
+		window.localStorage.setItem('__id__1',id2);
+		window.localStorage.setItem('__id__2',id3);
+		window.localStorage.setItem('__id__3',id1);
+	}
+}
+
+function opiszID(){
+	var id1=window.localStorage.getItem('__id__1');
+	var id2=window.localStorage.getItem('__id__2');
+	var id3=window.localStorage.getItem('__id__3');
+	return 'ids=['+id1+','+id2+','+id3+']';
+	//document.getElementById('test').innerHTML=opis;
+}
+
+   	function goforwad() {
+		window.scrollTo(0,0);
+		onMenuKeyDown();
+		document.getElementById('test').innerHTML='Forwad '+opiszID();
+	}
+   	function goback()   {
+		window.scrollTo(0,0);
+		onBackKeyDown();
+		document.getElementById('test').innerHTML='Back '+opiszID();
+	}
+
+	
     function onDeviceReady() {
 		document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
 		document.addEventListener("resume", onResume, false);
@@ -46,7 +80,7 @@ function zapiszID(id){
 		document.addEventListener("menubutton", onMenuKeyDown, false);		
 		//document.getElementById('test').innerHTML='onDeviceReady end<br />';
 	        var id=czytajID();
-	        pokazSzczecin(id);
+	        pokazFEED(id);
 
 		
     }
@@ -73,6 +107,7 @@ function zapiszID(id){
 	
 	function onBackKeyDown() {
 		document.getElementById('test').innerHTML='onBackKeyDown<br />';
+		
 		var id=czytajID();
 		if (id) rssfeedsetup(id); else onMenuKeyDown();
 		
@@ -109,7 +144,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
     
     
     
-    function pokazSzczecin(id){
+    function pokazFEED(id){
     	document.getElementById("menu").style.display="none";
     	kasuj();
     	//var html='';
@@ -117,6 +152,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
     	//document.getElementById("feeddiv").innerHTML=html;
     	rssfeedsetup(id);
     	zapal();
+		document.getElementById('test').innerHTML=opiszID();
     }
     
     
@@ -159,21 +195,12 @@ document.getElementsByTagName('head')[0].appendChild(script);
 	document.getElementById("feeddiv").innerHTML+=rssoutput;
     }
 // =================================================================	
-    	function zgas() {document.getElementById("feeddiv").style.zIndex='0.5';}
-   	function zapal(){document.getElementById("feeddiv").style.zIndex='1.0';}
+    function zgas() {document.getElementById("feeddiv").style.opacity='0.5';}
+   	function zapal(){document.getElementById("feeddiv").style.opacity='1.0';}
    	function kasuj(){document.getElementById("feeddiv").innerHTML='';}
    	function scroll() {window.scrollTo(0,0)}
    	function koniec() {window.scrollTo(0,0)}
-   	function deviceInfo() {
-   		window.scrollTo(0,0)
-		var element = document.getElementById('feeddiv');
-		element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
-		'Device PhoneGap: ' + device.phonegap + '<br />' + 
-		'Device Platform: ' + device.platform + '<br />' + 
-		'Device UUID: '     + device.uuid     + '<br />' + 
-		'Device Version: '  + device.version  + '<br />'; 
-		}
-
+ 
 	
  </script>
  
@@ -187,15 +214,15 @@ document.getElementsByTagName('head')[0].appendChild(script);
   <div><a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn">Menu</a> &nbsp; <b> PhoneGap test cordova</b></div>
   
    <div id="menu" style="display:none;"> 
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(0);" class="btn btn-info">Szczecin</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(1);" class="btn btn-info">Wiadomosci</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(2);" class="btn btn-primary">InfoTech</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(3);" class="btn btn-primary">Dzone</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(4);" class="btn btn-primary">WebDev</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(5);" class="btn btn-primary">Code</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(6);" class="btn btn-inverse">WIZUT</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(7);" class="btn btn-inverse">Portale</a>
-  	<a href="javascript:void(0);" onClick="pokazSzczecin(8);" class="btn btn-inverse">Allegro</a>	
+  	<a href="javascript:void(0);" onClick="pokazFEED(0);" class="btn btn-info">Szczecin</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(2);" class="btn btn-primary">InfoTech</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(3);" class="btn btn-primary">Dzone</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(4);" class="btn btn-primary">WebDev</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(5);" class="btn btn-primary">Code</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(6);" class="btn btn-inverse">WIZUT</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(7);" class="btn btn-inverse">Portale</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(8);" class="btn btn-inverse">Allegro</a>	
  	<a href="javascript:void(0);" onClick="viewInfo();"       class="btn ">InfoSzczecin</a>	
  	
  	<a href="javascript:void(0);" onClick="deviceInfo();"       class="btn btn-primary">device Info</a>
@@ -211,9 +238,9 @@ document.getElementsByTagName('head')[0].appendChild(script);
  <span class="pull-right"><a href=javascript:void(0);" onClick="scroll();" class="btn btn-info btn-small">menu &#8657; top</a></span>
    
 
-<div style="position:fixed; left:0px; bottom:0px; background:#fff; float:left; width:96%; padding:0.1% 2%; margin:0;">
- 	<a href="javascript:void(0);" onClick="onBackKeyDown();"  class="btn btn-small btn-inverse" style="float:left;"> <== </a>
- 	<a href="javascript:void(0);" onClick="onBackKeyDown();"  class="btn btn-small btn-inverse" style="float:right;"> ==></a> 
+<div style="position:fixed; left:0px; bottom:0px; background:#555; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;">
+ 	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
+ 	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
 
   </body>

@@ -1,4 +1,3 @@
-telegap
+<h1>One Rss</h1>
 =======
-
-test systemu phonegap
+<p>Pierwszy test systemu <b>phonegap</b></p>

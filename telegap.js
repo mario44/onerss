@@ -72,3 +72,11 @@ function szukaj_img(link,content){
 	return image;
 }
 
+  	function deviceInfo() {
+   		window.scrollTo(0,0)
+		var element = document.getElementById('feeddiv');
+		element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+		'Device Platform: ' + device.platform + '<br />' + 
+		'Device UUID: '     + device.uuid     + '<br />' + 
+		'Device Version: '  + device.version  + '<br />'; 
+		}
