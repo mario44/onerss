@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.telegap"
+        id        = "com.phonegap.onerss"
         versionCode="10" 
         version   = "1.1.0">
 
 
-    <name>ZnakZorro-TeleGap</name>
+    <name>ZnakZorro-OneRSS</name>
 
     <description>
-        Przykad testowy TeleGapa 
+        OneRss powered by PhoneGap 
     </description>
 
     <author href="http://zszczech.zut.edu.pl/git" email="zs@g.pl">
         ZnakZorro
     </author>
-
+    <preference name="phonegap-version" value="2.2.0" />
+    <preference name="orientation"      value="default" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+	
 <icon src="pliki/znakzorro.png" />
 <icon src="pliki/znakzorro.png" gap:platform="android" gap:density="ldpi" />
 <icon src="pliki/znakzorro.png" gap:platform="android" gap:density="mdpi" />
 <icon src="pliki/znakzorro.png" gap:platform="android" gap:density="hdpi" />
 <icon src="pliki/znakzorro.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="pliki/onerss.jpg" gap:platform="android" gap:density="xhdpi" />
 
 </widget>
