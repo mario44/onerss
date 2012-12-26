@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.telegap"
+        versionCode="10" 
+        version   = "1.1.0">
+
+
+    <name>ZnakZorro-TeleGap</name>
+
+    <description>
+        Przykad testowy TeleGapa 
+    </description>
+
+    <author href="http://zszczech.zut.edu.pl/telegap" email="zs@g.pl">
+        ZnakZorro
+    </author>
+
+<icon src="https://s3.amazonaws.com/build.phonegap.com/d7d0064c-4bfd-11e2-8ee2-12313d14b92b/znakzorro.png" gap:platform="android" gap:density="ldpi" />
+<icon src="https://s3.amazonaws.com/build.phonegap.com/d7d0064c-4bfd-11e2-8ee2-12313d14b92b/znakzorro.png" gap:platform="android" gap:density="mdpi" />
+<icon src="https://s3.amazonaws.com/build.phonegap.com/d7d0064c-4bfd-11e2-8ee2-12313d14b92b/znakzorro.png" gap:platform="android" gap:density="hdpi" />
+<icon src="https://s3.amazonaws.com/build.phonegap.com/d7d0064c-4bfd-11e2-8ee2-12313d14b92b/znakzorro.png" gap:platform="android" gap:density="xhdpi" />
+
+</widget>
