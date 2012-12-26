@@ -1,1 +1,5 @@
+
+git commit -a -m 'first commit'
+git pull
+
 git push -u origin master
