@@ -185,8 +185,8 @@ function moveID(kier){
 		rssoutput+="<a href='javascript:void(0)' rel-title='" + thefeeds[i].title + "'  rel-link='" + link + "' rel-lokalizacja='"+result.feed.title+"' rel-sekcja='"+sekcja+"' onClick='popup_open(this);'><span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span></a>";
 		rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
 		
-		rssoutput+="<a href='javascript:void(0)' onClick='open1(\''+link+'\')' >[1]</a>";
-		rssoutput+="<a href='javascript:void(0)' onClick='open2(\''+link+'\')' >[1]</a>";
+		rssoutput+="<a href='javascript:void(0)' onClick='open1(\'"+link+"\')' > -[1]- </a>";
+		rssoutput+="<a href='javascript:void(0)' onClick='open2(\'"+link+"\')' > -[2]- </a>";
 		
 		rssoutput+="<div class='well'>";		
 			rssoutput+="<div class='image'>"+image+"</div>";		
@@ -205,7 +205,7 @@ function moveID(kier){
   function open1(url){
         var anchor = document.createElement('a');
         anchor.setAttribute('href', url);
-        //anchor.setAttribute('target', '_self');
+        anchor.setAttribute('target', '_self');
         
         var dispatch = document.createEvent('HTMLEvents')
         dispatch.initEvent('click', true, true);
