@@ -184,6 +184,10 @@ function moveID(kier){
 		rssoutput+='<div class="art">';
 		rssoutput+="<a href='javascript:void(0)' rel-title='" + thefeeds[i].title + "'  rel-link='" + link + "' rel-lokalizacja='"+result.feed.title+"' rel-sekcja='"+sekcja+"' onClick='popup_open(this);'><span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span></a>";
 		rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
+		
+		rssoutput+="<a href='javascript:void(0)' onClick='open1(\''+link+'\')' >[1]</a>";
+		rssoutput+="<a href='javascript:void(0)' onClick='open2(\''+link+'\')' >[1]</a>";
+		
 		rssoutput+="<div class='well'>";		
 			rssoutput+="<div class='image'>"+image+"</div>";		
 			rssoutput+=thefeeds[i].contentSnippet;		
@@ -194,6 +198,24 @@ function moveID(kier){
 	document.getElementById("feeddiv").innerHTML+=rssoutput;
     }
 // =================================================================	
+ 
+ 
+ 
+  //function openInWebView(url){
+  function open1(url){
+        var anchor = document.createElement('a');
+        anchor.setAttribute('href', url);
+        //anchor.setAttribute('target', '_self');
+        
+        var dispatch = document.createEvent('HTMLEvents')
+        dispatch.initEvent('click', true, true);
+        
+        anchor.dispatchEvent(dispatch);
+    }
+
+function open2(url){
+window.location.href = url;
+}
  
  
 	
@@ -238,5 +260,8 @@ function moveID(kier){
  	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
 
+
+
+<br /><br /><br /><br />
   </body>
 </html>
