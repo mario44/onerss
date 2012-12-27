@@ -141,8 +141,9 @@ function opiszID(){
     
     
     
-    	function rssfeedsetup(id){
-    		zapiszID(id);
+    function rssfeedsetup(id){
+    	zapiszID(id);
+		kasuj();
 		for(var i in rssy[id]) {
 			var v = rssy[id][i].url;
 			var feedlimit=6;
@@ -151,11 +152,10 @@ function opiszID(){
 			feedpointer.setNumEntries(feedlimit);
 			feedpointer.load(displayfeed);
 		}
-    	}
+    }
     	
  //=========================================================================   	
     function displayfeed(result){
-	zgas();
 	var title=result.feed.title || 'Portal';
 	var id=czytajID();
 	var sekcja=sekcje[id];
@@ -177,9 +177,7 @@ function opiszID(){
 		rssoutput+='</div>';
 	}
 	rssoutput+='</div>';
-	kasuj();
 	document.getElementById("feeddiv").innerHTML+=rssoutput;
-	zapal();
     }
 // =================================================================	
  
@@ -196,19 +194,19 @@ function opiszID(){
   
   <div><a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn">Menu</a> &nbsp; <b> PhoneGap test cordova</b></div>
   
-   <div id="menu" style="display:none; position:fixed; left:0; bottom:48px; background:#888; padding:0; z-index:2;"> 
+   <div id="menu" style="display:none; position:fixed; left:0; bottom:49px; background:#888; padding:2px; z-index:2;border-top:1px solid #444;"> 
   	<a href="javascript:void(0);" onClick="pokazFEED(0);" class="btn btn-info">Szczecin</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(2);" class="btn btn-primary">InfoTech</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(3);" class="btn btn-primary">Dzone</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(4);" class="btn btn-primary">WebDev</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(5);" class="btn btn-primary">Code</a>
-  	<a href="javascript:void(0);" onClick="pokazFEED(6);" class="btn btn-inverse">WIZUT</a>
+  	<a href="javascript:void(0);" onClick="pokazFEED(6);" class="btn btn-success">WIZUT</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(7);" class="btn btn-inverse">Portale</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(8);" class="btn btn-inverse">Allegro</a>	
- 	<a href="javascript:void(0);" onClick="viewInfo();"       class="btn ">InfoSzczecin</a>	
- 	<a href="javascript:void(0);" onClick="deviceInfo();"       class="btn btn-primary">device Info</a>
- 	<a href="javascript:void(0);" onClick="koniec();"       class="btn btn-primary">Koniec</a>
+ 	<a href="javascript:void(0);" onClick="viewInfo();"   class="btn btn-warning">InfoSzczecin</a>	
+ 	<a href="javascript:void(0);" onClick="deviceInfo();" class="btn btn-warning">device Info</a>
+ 	<a href="javascript:void(0);" onClick="koniec();"     class="btn btn-warning">Koniec</a>
   </div>
   
   <div id="test" style="display:block; padding:0.5em; border:1px solid gray; background:#eee;"></div>
@@ -218,8 +216,9 @@ function opiszID(){
  <span class="pull-right"><a href=javascript:void(0);" onClick="scroll();" class="btn btn-info btn-small">menu &#8657; top</a></span>
    
 
-<div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;">
+<div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;border-top:1px solid #444;">
  	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
+	<a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</a>
  	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
 
