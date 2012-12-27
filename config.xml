@@ -30,4 +30,8 @@
     <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="hdpi" />
     <gap:splash src="pliki/onerss.jpg" gap:platform="android" gap:density="xhdpi" />
 
+
+
+<access origin="*" />
+
 </widget>
