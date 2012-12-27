@@ -100,6 +100,20 @@ function szukaj_img(link,content){
 	return image;
 }
 
+
+/* DEBUG ----------------------------
+------------------------------------won */
+
+function opiszID(){
+document.getElementById('test').style.display='block';
+	var id1=window.localStorage.getItem('__id__1');
+	var id2=window.localStorage.getItem('__id__2');
+	var id3=window.localStorage.getItem('__id__3');
+	//console.log('OpisID='+id1+' '+id2+' '+id3)	
+	return 'ids=['+id1+','+id2+','+id3+']';
+	//document.getElementById('test').innerHTML=opis;
+}
+
   	function deviceInfo() {
    		window.scrollTo(0,0)
 		var element = document.getElementById('feeddiv');

@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="telegap.css">
-    	<title>OneRSS 2</title>
+    	<title>OneRSS 4</title>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
  	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
@@ -17,61 +17,58 @@
 
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-        var id=czytajID();
-        pokazFEED(id);
+        pokazFEED(czytajID());
 	//document.getElementById('test').innerHTML+='onLoad<br />';
 	
     }
 
 function czytajID(){
-	var id=window.localStorage.getItem('__id__1');
-	moveID(-1);
-	if (id) return id; else return 0;
+	var id=window.localStorage.getItem('__id__1') || '0';
+	if (id==='undefined') id='0';
+	return id;
 }
 
 function zapiszID(id){
-	moveID(1);
 	window.localStorage.setItem('__id__1',id);
 }
 
 function moveID(kier){
-	var id1=window.localStorage.getItem('__id__1');
-	var id2=window.localStorage.getItem('__id__2');
-	var id3=window.localStorage.getItem('__id__3');
+	var id1=window.localStorage.getItem('__id__1') || '0';
+	var id2=window.localStorage.getItem('__id__2') || '0';
+	var id3=window.localStorage.getItem('__id__3') || '0';
+	if (id1==='undefined') id1='0';
+	if (id2==='undefined') id2='0';
+	if (id3==='undefined') id3='0';
+	
+//console.log('move= '+kier+'='+id1+' '+id2+' '+id3)	
+
 	if (kier>0){
-		window.localStorage.setItem('__id__1',id2);
-		window.localStorage.setItem('__id__2',id3);
-		window.localStorage.setItem('__id__3',id1);
+		window.localStorage.setItem('__id__1',id1);
+		window.localStorage.setItem('__id__2',id1);
+		window.localStorage.setItem('__id__3',id2);
 	}	
 	if (kier<0){
 		window.localStorage.setItem('__id__1',id2);
 		window.localStorage.setItem('__id__2',id3);
 		window.localStorage.setItem('__id__3',id1);
 	}
+	//document.getElementById('test').innerHTML='  M='+kier+'='+opiszID();
 }
 
-function opiszID(){
-	var id1=window.localStorage.getItem('__id__1');
-	var id2=window.localStorage.getItem('__id__2');
-	var id3=window.localStorage.getItem('__id__3');
-	return 'ids=['+id1+','+id2+','+id3+']';
-	//document.getElementById('test').innerHTML=opis;
-}
+
 
    	function goforwad() {
 		window.scrollTo(0,0);
 		onMenuKeyDown();
-		document.getElementById('test').innerHTML='Forwad '+opiszID();
 	}
    	function goback()   {
 		window.scrollTo(0,0);
 		onBackKeyDown();
-		document.getElementById('test').innerHTML='Back '+opiszID();
 	}
 
 	
     function onDeviceReady() {
-		document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
+		//document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
 		document.addEventListener("resume", onResume, false);
 		document.addEventListener("pause", onPause, false);
 		document.addEventListener("online", onOnline, false);
@@ -79,8 +76,8 @@ function opiszID(){
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		document.addEventListener("menubutton", onMenuKeyDown, false);		
 		//document.getElementById('test').innerHTML='onDeviceReady end<br />';
-	        var id=czytajID();
-	        pokazFEED(id);
+	        
+	    //pokazFEED();
 
 		
     }
@@ -100,15 +97,22 @@ function opiszID(){
 	
 	function onOffline() {
 		document.getElementById('test').innerHTML='onOffline<br />';
+		moveID(-1);
+
 		var id=czytajID();
 		rssfeedsetup(id);
+		
 		
     }
 	
 	function onBackKeyDown() {
-		document.getElementById('test').innerHTML='onBackKeyDown<br />';
+		//document.getElementById('test').innerHTML='onBackKeyDown<br />';
 		
+		//console.log('onBackKeyDown');
 		var id=czytajID();
+		moveID(-1);
+		moveID(-1);
+		document.getElementById('test').innerHTML='onBackKeyDown '+opiszID();
 		if (id) rssfeedsetup(id); else onMenuKeyDown();
 		
     }
@@ -117,7 +121,7 @@ function opiszID(){
 		//document.getElementById('test').innerHTML='onMenuKeyDown<br />';
 		zgas();
 		document.getElementById("menu").style.display="block";
-		scroll();
+		//scroll();
 		
     }
     
@@ -130,19 +134,23 @@ function opiszID(){
     
     function pokazFEED(id){
     	document.getElementById("menu").style.display="none";
-    	
+    	//document.getElementById('test').innerHTML+='feed '+id+' '+opiszID();
     	//var html='';
     	//html+='<div class="arty"><div class="art">Szczecin moje miasto</div></div>';
     	//document.getElementById("feeddiv").innerHTML=html;
     	rssfeedsetup(id);
     	zapal();
-		document.getElementById('test').innerHTML=opiszID();
+		//document.getElementById('test').innerHTML=opiszID();
     }
     
     
     
     function rssfeedsetup(id){
-    	zapiszID(id);
+		moveID(1);
+		zapiszID(id);
+	//if (id===undefined) id=0;
+		//console.log('rssfeedsetup id='+id);
+    	//document.getElementById('test').innerHTML+='rss '+id+' '+opiszID();
 		kasuj();
 		for(var i in rssy[id]) {
 			var v = rssy[id][i].url;
@@ -191,9 +199,9 @@ function opiszID(){
  <body onload="onLoad()">
  
   
-  
+ <!-- 
   <div><a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn">Menu</a> &nbsp; <b> PhoneGap test cordova</b></div>
-  
+  -->
    <div id="menu" style="display:none; position:fixed; left:0; bottom:49px; background:#888; padding:2px; z-index:2;border-top:1px solid #444;"> 
   	<a href="javascript:void(0);" onClick="pokazFEED(0);" class="btn btn-info">Szczecin</a>
   	<a href="javascript:void(0);" onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</a>
@@ -209,7 +217,7 @@ function opiszID(){
  	<a href="javascript:void(0);" onClick="koniec();"     class="btn btn-warning">Koniec</a>
   </div>
   
-  <div id="test" style="display:block; padding:0.5em; border:1px solid gray; background:#eee;"></div>
+  <div id="test" style="display:none; padding:0.5em; border:1px solid gray; background:#eee;"></div>
   
   <div id="feeddiv" class="wrapper fullwidth box"></div>
   
@@ -219,6 +227,8 @@ function opiszID(){
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;border-top:1px solid #444;">
  	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
 	<a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</a>
+	<a href="javascript:void(0);" onClick="window.localStorage.clear();onLoad();" class="btn btn-inverse">localStorage.clear</a>
+	
  	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
 
