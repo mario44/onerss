@@ -6,7 +6,7 @@ function szukaj_img(link,content)
    	function zapal(){document.getElementById("feeddiv").style.opacity='1.0';}
    	function kasuj(){document.getElementById("feeddiv").innerHTML='';}
    	function scroll() {window.scrollTo(0,0)}
-   	function koniec() {window.scrollTo(0,0)}
+   	
 	
 	
 	

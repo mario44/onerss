@@ -12,7 +12,7 @@
  	<script type="text/javascript" charset="utf-8" src="telegap.js"></script>
  	
 <script type="text/javascript" charset="utf-8">
-
+var menuOpen=false;
 	google.load("feeds", "1");
 
     function onLoad() {
@@ -30,6 +30,7 @@ function czytajID(){
 
 function zapiszID(id){
 	window.localStorage.setItem('__id__1',id);
+	//document.getElementById('test').innerHTML+='  Z='+opiszID();
 }
 
 function moveID(kier){
@@ -43,7 +44,7 @@ function moveID(kier){
 //console.log('move= '+kier+'='+id1+' '+id2+' '+id3)	
 
 	if (kier>0){
-		window.localStorage.setItem('__id__1',id1);
+		window.localStorage.setItem('__id__1',id3);
 		window.localStorage.setItem('__id__2',id1);
 		window.localStorage.setItem('__id__3',id2);
 	}	
@@ -52,7 +53,7 @@ function moveID(kier){
 		window.localStorage.setItem('__id__2',id3);
 		window.localStorage.setItem('__id__3',id1);
 	}
-	//document.getElementById('test').innerHTML='  M='+kier+'='+opiszID();
+	//document.getElementById('test').innerHTML+='  M='+kier+'='+opiszID();
 }
 
 
@@ -66,6 +67,12 @@ function moveID(kier){
 		onBackKeyDown();
 	}
 
+	function koniec(){
+		//To exit the application:
+		navigator.app.exitApp()
+		//To use the back button:
+		//navigator.app.backHistory()
+	}
 	
     function onDeviceReady() {
 		//document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
@@ -97,9 +104,10 @@ function moveID(kier){
 	
 	function onOffline() {
 		document.getElementById('test').innerHTML='onOffline<br />';
-		moveID(-1);
+		
 
 		var id=czytajID();
+		moveID(-1);
 		rssfeedsetup(id);
 		
 		
@@ -109,20 +117,17 @@ function moveID(kier){
 		//document.getElementById('test').innerHTML='onBackKeyDown<br />';
 		
 		//console.log('onBackKeyDown');
+		moveID(-1);
 		var id=czytajID();
-		moveID(-1);
-		moveID(-1);
-		document.getElementById('test').innerHTML='onBackKeyDown '+opiszID();
+		
+		//document.getElementById('test').innerHTML='onBackKeyDown '+opiszID();
 		if (id) rssfeedsetup(id); else onMenuKeyDown();
 		
     }
 	
 	function onMenuKeyDown() {
-		//document.getElementById('test').innerHTML='onMenuKeyDown<br />';
-		zgas();
-		document.getElementById("menu").style.display="block";
-		//scroll();
-		
+		if (menuOpen) {document.getElementById("menu").style.display="none"; zapal();menuOpen=false;}
+		else          {document.getElementById("menu").style.display="block";zgas();menuOpen=true;}	
     }
     
     
@@ -138,6 +143,7 @@ function moveID(kier){
     	//var html='';
     	//html+='<div class="arty"><div class="art">Szczecin moje miasto</div></div>';
     	//document.getElementById("feeddiv").innerHTML=html;
+			moveID(1);
     	rssfeedsetup(id);
     	zapal();
 		//document.getElementById('test').innerHTML=opiszID();
@@ -146,7 +152,7 @@ function moveID(kier){
     
     
     function rssfeedsetup(id){
-		moveID(1);
+		menuOpen=false;
 		zapiszID(id);
 	//if (id===undefined) id=0;
 		//console.log('rssfeedsetup id='+id);
