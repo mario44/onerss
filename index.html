@@ -115,7 +115,8 @@ function moveID(kier){
 	
 	function onBackKeyDown() {
 		//document.getElementById('test').innerHTML='onBackKeyDown<br />';
-		
+		navigator.app.backHistory();
+		//super.loadUrl("file:///android_asset/www/index.html");
 		//console.log('onBackKeyDown');
 		moveID(-1);
 		var id=czytajID();
