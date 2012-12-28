@@ -164,7 +164,8 @@ function podzielsie2(){
 
 
 function loadURL(url){
-navigator.app.loadUrl(url, { openExternal:true } ); 
+console.log(device.platform);
+//navigator.app.loadUrl(url, { openExternal:true } ); 
 }
 
 
