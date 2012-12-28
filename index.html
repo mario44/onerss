@@ -59,10 +59,15 @@ function moveID(kier){
 
 
    	function goforwad() {
+		document.getElementById("menu").style.display="none";
+		zapal();
 		window.scrollTo(0,0);
 		onMenuKeyDown();
 	}
+	
    	function goback()   {
+		document.getElementById("menu").style.display="none";
+		zapal();
 		window.scrollTo(0,0);
 		onBackKeyDown();
 	}
@@ -82,11 +87,8 @@ function moveID(kier){
 		document.addEventListener("offline", onOffline, false);
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		document.addEventListener("menubutton", onMenuKeyDown, false);		
-		//document.getElementById('test').innerHTML='onDeviceReady end<br />';
-	        
-	    //pokazFEED();
-
-		
+		//document.getElementById('test').innerHTML='onDeviceReady end<br />';        
+	    //pokazFEED();	
     }
 
    
@@ -104,13 +106,9 @@ function moveID(kier){
 	
 	function onOffline() {
 		document.getElementById('test').innerHTML='onOffline<br />';
-		
-
 		var id=czytajID();
 		moveID(-1);
 		rssfeedsetup(id);
-		
-		
     }
 	
 	function onBackKeyDown() {
@@ -120,7 +118,6 @@ function moveID(kier){
 		//console.log('onBackKeyDown');
 		moveID(-1);
 		var id=czytajID();
-		
 		//document.getElementById('test').innerHTML='onBackKeyDown '+opiszID();
 		if (id) rssfeedsetup(id); else onMenuKeyDown();
 		
@@ -151,8 +148,7 @@ function moveID(kier){
 	}
 
     
-    
-    
+ 
     
     function pokazFEED(id){
     	document.getElementById("menu").style.display="none";
@@ -160,7 +156,7 @@ function moveID(kier){
     	//var html='';
     	//html+='<div class="arty"><div class="art">Szczecin moje miasto</div></div>';
     	//document.getElementById("feeddiv").innerHTML=html;
-			moveID(1);
+		moveID(1);
     	rssfeedsetup(id);
     	zapal();
 		//document.getElementById('test').innerHTML=opiszID();
@@ -171,12 +167,13 @@ function moveID(kier){
     function rssfeedsetup(id){
 		menuOpen=false;
 		zapiszID(id);
+		var godzin=24;
 	//if (id===undefined) id=0;
 		//console.log('rssfeedsetup id='+id);
     	//document.getElementById('test').innerHTML+='rss '+id+' '+opiszID();
 		kasuj();
 		//document.getElementById("feeddiv").innerHTML='<h1 class="hh1" style="background:'+kolory[id]+'">'+sekcje[id]+'</h1>';
-		document.getElementById("feeddiv").innerHTML='<h2 class="box" style="text-align:center;color:white; padding:0.25%; margin:0; background:#248">'+sekcje[id]+'</h2>';
+		document.getElementById("feeddiv").innerHTML='<h2 id="title">'+sekcje[id]+' / '+godzin+'h</h2>';
 		for(var i in rssy[id]) {
 		//console.log(i);
 			var v = rssy[id][i].url;
@@ -192,6 +189,8 @@ function moveID(kier){
     	
  //=========================================================================   	
     function displayfeed(result){
+		var godzin=24;
+		
 		var title=result.feed.title || 'Portal';
 		if (sekcja!='WIZUT') {
 			//var arr=title.split(' '); arr=arr.slice(0,3); title=arr.join(' ');
@@ -203,15 +202,26 @@ function moveID(kier){
 		var uniqueId=uid(result.feed.feedUrl);
 		var el  = document.getElementById(uniqueId);
 
-		var rssoutput='';
-		rssoutput+='<div class="hh1 box" style="background:'+kolor+'">';
-			rssoutput+='<span class="pull-left">'+title+'</span>';
-			rssoutput+='<span class="pull-right"><a href="#" class="btn btn-info btn-small">&#8657; top</a></span>';
-		rssoutput+='</div>';
-		rssoutput+='<div class="arty box">';
+		var rssheader='';
+		rssheader+='<div class="hh1 box" style="background:'+kolor+'">';
+			rssheader+='<span class="pull-left">'+title+'</span>';
+			rssheader+='<span class="pull-right"><a href="#" class="btn btn-info btn-small">&#8657; top</a></span>';
+		rssheader+='</div>';
+		
 		var thefeeds=result.feed.entries;
-				
+		
+		var rssoutput='<div class="arty box">';
+		
 		for (var i=0; i<thefeeds.length; i++) {
+					// czas  -----------------------------------------
+					
+					var delta = deltaCzas(thefeeds[i].publishedDate);
+					if (delta>godzin) continue;
+					// ostatnio
+					//var rssczas = new Date(thefeeds[i].publishedDate);
+					//var teraz=Date.parse(rssczas);
+					//if (last>teraz) continue;
+					// czas  ostatnio -----------------------------------------
 			//console.log(thefeeds[i]);
 			var link  = korekta_link(thefeeds[i].link,thefeeds[i].content);
 			var image = szukaj_img(thefeeds[i].link,thefeeds[i].content);
@@ -220,10 +230,8 @@ function moveID(kier){
 				rssoutput+="<span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span>";
 			rssoutput+="</a>";
 			rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
-			
-			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > *[1]* </a>";
-			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > *[2]* </a>";
-			
+			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > *[1]* </a>";
+			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > *[2]* </a>";
 			rssoutput+="<div class='well'>";		
 				rssoutput+="<div class='image'>"+image+"</div>";		
 				rssoutput+=thefeeds[i].contentSnippet;		
@@ -231,9 +239,11 @@ function moveID(kier){
 			rssoutput+='</div>';
 		}
 		rssoutput+='</div>';
-		//document.getElementById("feeddiv").innerHTML+=rssoutput;
-		el.innerHTML+=rssoutput;
-		el.style.display='block';
+
+		if (rssoutput.length>50){
+			el.innerHTML+=rssheader+rssoutput;
+			el.style.display='block';
+		}
     }
 // =================================================================	
  

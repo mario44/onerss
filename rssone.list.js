@@ -17,7 +17,8 @@ rssy[x].push({title:'wSzczecinie',url:'http://www.wszczecinie.pl/rss/news.xml',l
 x++; rssy[x]=[];	sekcje[x]='Wiadomości';	kolory[x]='#8a8';
 rssy[x].push({title:'Gazeta',url:'http://gazeta.pl.feedsportal.com/c/32739/f/592282/index.rss',limit:10,color:'#FDFDF2'});
 rssy[x].push({title:'Wiadomości',url:'http://rss.feedsportal.com/c/32739/f/530355/index.rss',limit:10,color:'#FDFDF2'});
-rssy[x].push({title:'NaTemat',url:'http://natemat.pl/rss/wszystkie',limit:10,color:'#eee'});	
+rssy[x].push({title:'NaTemat',url:'http://natemat.pl/rss/wszystkie',limit:10,color:'#eee'});
+rssy[x].push({title:'TOK-FM' ,url:'http://www.tokfm.pl/pub/rss/tokfmpl_glowne.xml',limit:9});	
 rssy[x].push({title:'Facebook',url:'http://www.facebook.com/feeds/notifications.php?id=1817860960&viewer=1817860960&key=AWifprYHa4usn0Lf&format=rss20',limit:5});	
 
 
@@ -83,7 +84,7 @@ x++; rssy[x]=[];		sekcje[x]='Portale';	kolory[x]='#444';
 rssy[x].push({title:'Interia' ,url:'http://kanaly.rss.interia.pl/fakty.xml',limit:9});	
 rssy[x].push({title:'WP' ,url:'http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml',limit:9});	
 rssy[x].push({title:'TVN24' ,url:'http://www.tvn24.pl/najnowsze.xml',limit:9});	
-rssy[x].push({title:'TOK-FM' ,url:'http://www.tokfm.pl/pub/rss/tokfmpl_glowne.xml',limit:9});	
+	
 rssy[x].push({title:'ŚwiatCzytników' ,url:'http://rss.swiatczytnikow.pl/SwiatCzytnikow',limit:9});	
 rssy[x].push({title:'RadioM' ,url:'http://www.radiomaryja.pl/feed/',limit:9});	
 //rssy[x].push({title:'' ,url:'',limit:9});	
