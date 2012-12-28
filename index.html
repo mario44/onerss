@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="telegap.css">
-    	<title>OneRSS 4</title>
+    	<title>OneRSS 6</title>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
  	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
@@ -133,6 +133,22 @@ function moveID(kier){
     
     
     
+	function uid(t){
+		var suma=0;
+		for (var i in t) {suma+=t.charCodeAt(i);}
+		return 'id'+suma;	
+	}
+
+	function uidiv(url,i){
+		var feedcontainer=document.getElementById("feeddiv");
+		var uniqueId=uid(url);	
+		var el = document.createElement('article');
+		el.className='col box';
+		el.style.display='none';
+		el.setAttribute("id",uniqueId);
+		feedcontainer.appendChild(el);
+		//document.getElementById('menu'+i).setClass('k'+uniqueId);
+	}
 
     
     
@@ -160,10 +176,13 @@ function moveID(kier){
     	//document.getElementById('test').innerHTML+='rss '+id+' '+opiszID();
 		kasuj();
 		//document.getElementById("feeddiv").innerHTML='<h1 class="hh1" style="background:'+kolory[id]+'">'+sekcje[id]+'</h1>';
-		document.getElementById("feeddiv").innerHTML='<h2 class="box" style="text-align:center;color:white; padding:0.25%; margin:0.25%;">'+sekcje[id]+'</h2>';
+		document.getElementById("feeddiv").innerHTML='<h2 class="box" style="text-align:center;color:white; padding:0.25%; margin:0; background:#248">'+sekcje[id]+'</h2>';
 		for(var i in rssy[id]) {
+		//console.log(i);
 			var v = rssy[id][i].url;
 			var feedlimit=6;
+			var j=parseInt(i)+1;
+			uidiv(v,j);
 			var feedpointer=new google.feeds.Feed(v);
 			//feedpointer.includeHistoricalEntries()
 			feedpointer.setNumEntries(feedlimit);
@@ -173,34 +192,48 @@ function moveID(kier){
     	
  //=========================================================================   	
     function displayfeed(result){
-	var title=result.feed.title || 'Portal';
-	var id=czytajID();
-	var sekcja=sekcje[id];
-	var kolor=kolory[id];
-	var rssoutput='';
-	rssoutput+='<div class="hh1 box" style="background:'+kolor+'"><span class="pull-left">'+sekcja+'/'+title+'</span><span class="pull-right"><a href="#" class="btn btn-info btn-small">&#8657; top</a></span></div>';
-	rssoutput+='<div class="arty box">';
-	var thefeeds=result.feed.entries;
-			
-	for (var i=0; i<thefeeds.length; i++) {
-		//console.log(thefeeds[i]);
-		var link  = korekta_link(thefeeds[i].link,thefeeds[i].content);
-		var image = szukaj_img(thefeeds[i].link,thefeeds[i].content);
-		rssoutput+='<div class="art">';
-		rssoutput+="<a href='javascript:void(0)' rel-title='" + thefeeds[i].title + "'  rel-link='" + link + "' rel-lokalizacja='"+result.feed.title+"' rel-sekcja='"+sekcja+"' onClick='popup_open(this);'><span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span></a>";
-		rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
-		
-		rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > -[1]- </a>";
-		rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > -[2]- </a>";
-		
-		rssoutput+="<div class='well'>";		
-			rssoutput+="<div class='image'>"+image+"</div>";		
-			rssoutput+=thefeeds[i].contentSnippet;		
-		rssoutput+="</div>";		
+		var title=result.feed.title || 'Portal';
+		if (sekcja!='WIZUT') {
+			//var arr=title.split(' '); arr=arr.slice(0,3); title=arr.join(' ');
+			title=title.replace('Zachodniopomorski Uniwersytet Technologiczny','ZUT');
+			}
+		var id=czytajID();
+		var sekcja=sekcje[id];
+		var kolor=kolory[id];
+		var uniqueId=uid(result.feed.feedUrl);
+		var el  = document.getElementById(uniqueId);
+
+		var rssoutput='';
+		rssoutput+='<div class="hh1 box" style="background:'+kolor+'">';
+			rssoutput+='<span class="pull-left">'+title+'</span>';
+			rssoutput+='<span class="pull-right"><a href="#" class="btn btn-info btn-small">&#8657; top</a></span>';
 		rssoutput+='</div>';
-	}
-	rssoutput+='</div>';
-	document.getElementById("feeddiv").innerHTML+=rssoutput;
+		rssoutput+='<div class="arty box">';
+		var thefeeds=result.feed.entries;
+				
+		for (var i=0; i<thefeeds.length; i++) {
+			//console.log(thefeeds[i]);
+			var link  = korekta_link(thefeeds[i].link,thefeeds[i].content);
+			var image = szukaj_img(thefeeds[i].link,thefeeds[i].content);
+			rssoutput+='<div class="art">';
+			rssoutput+="<a href='javascript:void(0)' rel-title='" + thefeeds[i].title + "'  rel-link='" + link + "' rel-lokalizacja='"+result.feed.title+"' rel-sekcja='"+sekcja+"' onClick='popup_open(this);'>";
+				rssoutput+="<span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span>";
+			rssoutput+="</a>";
+			rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
+			
+			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > *[1]* </a>";
+			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > *[2]* </a>";
+			
+			rssoutput+="<div class='well'>";		
+				rssoutput+="<div class='image'>"+image+"</div>";		
+				rssoutput+=thefeeds[i].contentSnippet;		
+			rssoutput+="</div>";		
+			rssoutput+='</div>';
+		}
+		rssoutput+='</div>';
+		//document.getElementById("feeddiv").innerHTML+=rssoutput;
+		el.innerHTML+=rssoutput;
+		el.style.display='block';
     }
 // =================================================================	
  
@@ -210,7 +243,7 @@ function moveID(kier){
   function open1(url){
         var anchor = document.createElement('a');
         anchor.setAttribute('href', url);
-        anchor.setAttribute('target', '_self');
+        //anchor.setAttribute('target', '_self');
         
         var dispatch = document.createEvent('HTMLEvents')
         dispatch.initEvent('click', true, true);
