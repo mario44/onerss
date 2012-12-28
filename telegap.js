@@ -101,6 +101,59 @@ function szukaj_img(link,content){
 }
 
 
+ 
+ 
+/* share*/
+
+
+var Share = function() {};       
+Share.prototype.show = function(content, success, fail) {
+    return cordova.exec( function(args) {
+        success(args);
+    }, function(args) {
+        fail(args);
+    }, 'Share', '', [content]);
+};
+
+if(!window.plugins) {
+    window.plugins = {};
+}
+if (!window.plugins.share) {
+    window.plugins.share = new Share();
+} 
+
+function podzielsie(){
+	var share = new Share();
+	share.show({
+		subject: 'Jestem ZnakZorro',
+		text: 'http://szczech.com.pl'},
+		function() {}, // Success function
+		function() {alert('Share failed')} // Failure function
+
+	); 
+}
+
+
+ //function openInWebView(url){
+  function open1(url){
+        var anchor = document.createElement('a');
+        anchor.setAttribute('href', url);
+        //anchor.setAttribute('target', '_self');
+        
+        var dispatch = document.createEvent('HTMLEvents')
+        dispatch.initEvent('click', true, true);
+        
+        anchor.dispatchEvent(dispatch);
+    }
+
+	
+function open2(url){
+window.location.href = url;
+}
+
+
+
+
 /* DEBUG ----------------------------
 ------------------------------------won */
 

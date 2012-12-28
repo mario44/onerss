@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="telegap.css">
-    	<title>OneRSS 6</title>
+    	<title>OneRSS 2.0</title>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
  	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
@@ -191,11 +191,16 @@ function moveID(kier){
     function displayfeed(result){
 		var godzin=24;
 		
-		var title=result.feed.title || 'Portal';
-		if (sekcja!='WIZUT') {
-			//var arr=title.split(' '); arr=arr.slice(0,3); title=arr.join(' ');
-			title=title.replace('Zachodniopomorski Uniwersytet Technologiczny','ZUT');
-			}
+			var title=result.feed.title || 'Portal';
+//console.log(title);console.log(title.length);
+			
+			if (sekcja!='WIZUT') {
+				//var arr=title.split(' '); arr=arr.slice(0,3); title=arr.join(' ');
+				title=title.replace('Zachodniopomorski Uniwersytet Technologiczny','ZUT');
+				title=title.replace('Kanał RSS','');
+				}
+			if (title.length>40) {var arr=title.split(' '); arr=arr.slice(0,5); title=arr.join(' ');}
+//Android.com.pl - Największe Polskie Centrum Google Android.			
 		var id=czytajID();
 		var sekcja=sekcje[id];
 		var kolor=kolory[id];
@@ -229,9 +234,9 @@ function moveID(kier){
 			rssoutput+="<a href='javascript:void(0)' rel-title='" + thefeeds[i].title + "'  rel-link='" + link + "' rel-lokalizacja='"+result.feed.title+"' rel-sekcja='"+sekcja+"' onClick='popup_open(this);'>";
 				rssoutput+="<span class='btn btn-small pull-right czas'>" + toDate(thefeeds[i].publishedDate) + "</span>";
 			rssoutput+="</a>";
-			rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_self'>" + thefeeds[i].title + "</a>";
-			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > *[1]* </a>";
-			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > *[2]* </a>";
+			rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_blank' rel='external' >" + thefeeds[i].title + "</a>";
+			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open1(\""+link+"\");' > [.1.] </a>";
+			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='open2(\""+link+"\");' > [.2.] </a>";
 			rssoutput+="<div class='well'>";		
 				rssoutput+="<div class='image'>"+image+"</div>";		
 				rssoutput+=thefeeds[i].contentSnippet;		
@@ -246,24 +251,6 @@ function moveID(kier){
 		}
     }
 // =================================================================	
- 
- 
- 
-  //function openInWebView(url){
-  function open1(url){
-        var anchor = document.createElement('a');
-        anchor.setAttribute('href', url);
-        //anchor.setAttribute('target', '_self');
-        
-        var dispatch = document.createEvent('HTMLEvents')
-        dispatch.initEvent('click', true, true);
-        
-        anchor.dispatchEvent(dispatch);
-    }
-
-function open2(url){
-window.location.href = url;
-}
  
  
 	
@@ -303,7 +290,8 @@ window.location.href = url;
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;border-top:1px solid #444;">
  	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
 	<a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</a>
-	<a href="javascript:void(0);" onClick="window.localStorage.clear();onLoad();" class="btn btn-inverse">localStorage.clear</a>
+	<a href="javascript:void(0);" onClick="window.localStorage.clear();onLoad();" class="btn btn-inverse">LStorage.clear</a>
+	<a href="javascript:void(0);" onClick="podzielsie();" class="btn btn-info">Share</a>
 	
  	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
