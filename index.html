@@ -236,7 +236,7 @@ function moveID(kier){
 			rssoutput+="</a>";
 			//rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_blank' rel='external' >" + thefeeds[i].title + "</a>";
 			rssoutput+="<a href='javascript:void(0);' onClick='loadURL(\""+link+"\");' class='title' title='Internet' target='_blank' rel='external' >" + thefeeds[i].title + "</a>";
-			rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='loadURL(\""+link+"\");' > [>>>] </a>";
+			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='loadURL(\""+link+"\");' > [>>>] </a>";
 			rssoutput+="<div class='well'>";		
 				rssoutput+="<div class='image'>"+image+"</div>";		
 				rssoutput+=thefeeds[i].contentSnippet;		
@@ -287,14 +287,19 @@ function moveID(kier){
  <span class="pull-right"><a href=javascript:void(0);" onClick="scroll();" class="btn btn-info btn-small">menu &#8657; top</a></span>
    
 
+   	<button onClick="podzielsie();" class="btn2 btn-inverse">Share1</button>
+  	<button onClick="podzielsie2();" >Share2</button>
+  	<input type="button"  class="btn2 btn-info" onClick="podzielsie3();" value="Share3" />
+
+   
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#888; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.9;z-index:2;border-top:1px solid #444;">
  	<a href="javascript:void(0);" onClick="goback();"  class="btn btn-small btn-inverse" style="float:left;"><img src="pliki/arr-left.png" /></a>
 	<a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</a>
-	<a href="javascript:void(0);" onClick="window.localStorage.clear();onLoad();" class="btn btn-inverse">LStorage.clear</a>
-	<a href="javascript:void(0);" onClick="podzielsie();" class="btn btn-info">Share</a>
-	<a href="javascript:void(0);" onClick="podzielsie2();" class="btn btn-info">Share2</a>
+	<a href="javascript:void(0);" onClick="window.localStorage.clear();onLoad();" class="btn2 btn-inverse">LS.clear</a>
+	<a href="javascript:void(0);" onClick="podzielsie();" class="btn2 btn-info">Sh1</a>
+	<a href="javascript:void(0);" onClick="podzielsie2();" class="btn2 btn-info">Sh2</a>
 	
- 	<a href="javascript:void(0);" onClick="goforwad();"  class="btn btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
+ 	<a href="javascript:void(0);" onClick="goforwad();"  class="btn2 btn-small btn-inverse" style="float:right;"><img src="pliki/arr-right.png" /></a> 
 </div>
 
 

@@ -133,6 +133,16 @@ function podzielsie(){
 	); 
 }
 
+function podzielsie3(){
+	var share = new Share();
+	share.show({
+		title: 'Jestem ZnakZorro',
+		content: 'http://szczech.com.pl'},
+		function(al) {alert(al+' sukces share 1')}, // Success function
+		function(al) {alert(al+' Share failed 1')} // Failure function
+
+	); 
+}
 function podzielsie2(){
 	var share = new Share();
 	share.show('Jestem ZnakZorro',
