@@ -3,10 +3,10 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.onerss"
         versionCode="10" 
-        version   = "2.1.0">
+        version   = "2.2.0">
 
 
-    <name>ZnakZorro-OneRSS-share</name>
+    <name>ZnakZorro-OneRSS-links</name>
 
     <description>
         OneRss powered by PhoneGap 

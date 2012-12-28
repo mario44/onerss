@@ -47,8 +47,8 @@ div#menu .btn {min-width:5em;}
 
 
 
-#popup {display:none; background:#ddd; border:2px solid #444; padding:2px 10px; position:fixed; top:40px; left:50%; margin-left:-410px; width:800px;  max-width:95%;}
-#popup #popup_body {background:white; padding:10px; min-height:100px;line-height:160%;}
+#popup {display:none; background:#ddd; border:2px solid #444; padding:2px; position:fixed; top:40px; left:5%; width:90%; margin:0;}
+#popup #popup_body {background:white; padding:0; min-height:150px;line-height:160%;}
 #popup #popup_header, #popup #popup_footer{font-weight:bold; text-align:right; padding:5px; font-size:110%;}
 #popup_title {float:left; text-align:left; padding-top:5px;}
 
