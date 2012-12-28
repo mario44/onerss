@@ -221,7 +221,7 @@ function moveID(kier){
 		var rssheader='';
 		rssheader+='<div class="hh1 box" style="background:'+kolor+'">';
 			rssheader+='<span class="pull-left">'+title+'</span>';
-			rssheader+='<span class="pull-right"><a href="#" class="btn btn-info btn-small">&#8657; top</a></span>';
+			rssheader+='<span class="pull-right"><button class="btn btn-info btn-small">&#8657; top</button></span>';
 		rssheader+='</div>';
 		
 		var thefeeds=result.feed.entries;
@@ -348,7 +348,8 @@ function moveID(kier){
 <div id="popup" class="box">
 		<div id="popup_header"><h4 id="popup_title">Tytuł</h4> <a href="javascript:void(0)" class="btn btn-danger btn-small" onClick="popup_close();"> &nbsp; X &nbsp; </a></div>
 		<div id="popup_body" class="box">   
-			<a href="#" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Zapisz link</a>
+			<!--a href="#" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Zapisz link</a-->
+			<button class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Zapisz link</button>
 		</div>
 		<div id="popup_info"></div>
 		<div id="popup_config"><span class="btn btn-info" id="viewConfig">Config</span></div>
