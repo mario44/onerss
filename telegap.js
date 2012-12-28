@@ -164,8 +164,14 @@ function podzielsie2(){
 
 
 function loadURL(url){
-console.log(device.platform);
-//navigator.app.loadUrl(url, { openExternal:true } ); 
+try  { navigator.app.loadUrl(url, { openExternal:true } );  }
+catch(err) {
+  window.location.href=url;
+  //console.log(err+"\n"+url);
+  }
+//if (device.platform) navigator.app.loadUrl(url, { openExternal:true } ); 
+//else 
+
 }
 
 
@@ -185,7 +191,7 @@ document.getElementById('test').style.display='block';
   	function deviceInfo() {
    		window.scrollTo(0,0)
 		var element = document.getElementById('feeddiv');
-		element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+		element.innerHTML += 'Device Name: '     + device.name     + '<br />' + 
 		'Device Platform: ' + device.platform + '<br />' + 
 		'Device UUID: '     + device.uuid     + '<br />' + 
 		'Device Version: '  + device.version  + '<br />'; 
