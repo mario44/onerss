@@ -5,11 +5,11 @@ kolory=[];
 var x=-1; 
 // Szczecin
 x++; rssy[x]=[];  sekcje[x]='Szczecin';	kolory[x]='#369';
-rssy[x].push({title:'Szczecin Gazeta',url:'http://rss.feedsportal.com/c/32739/f/530434/index.rss',limit:10,color:'#FDFDF2'});	
+rssy[x].push({title:'Szczecin Gazeta',url:'http://rss.feedsportal.com/c/32739/f/530434/index.rss',limit:10});	
 //rssy[x].push({title:'Szczecin2 Gazeta',url:'http://rss.gazeta.pl/pub/rss/szczecin.xml',limit:10,color:'#FDFDF2'});	
-rssy[x].push({title:'Szczecin Radio',url:'http://www.radioszczecin.pl/rss.php?idp=1',limit:10,color:'#eee'});	
-rssy[x].push({title:'mmSzczecin',url:'http://www.mmszczecin.pl/rss/news.xml',limit:10,color:'#eee'});	
-rssy[x].push({title:'wSzczecinie',url:'http://www.wszczecinie.pl/rss/news.xml',limit:10,color:'#eee'});	
+rssy[x].push({title:'Szczecin Radio',url:'http://www.radioszczecin.pl/rss.php?idp=1',limit:10});	
+rssy[x].push({title:'mmSzczecin',url:'http://www.mmszczecin.pl/rss/news.xml',limit:10});	
+rssy[x].push({title:'wSzczecinie',url:'http://www.wszczecinie.pl/rss/news.xml',limit:10});	
 
 
 
@@ -79,15 +79,15 @@ rssy[x].push({title:'ZUT pracownicy' ,url:'http://www.zut.edu.pl/rssfeed-pracown
 
 
 // Portale
-x++; rssy[x]=[];		sekcje[x]='Portale';	kolory[x]='#fff';
-rssy[x].push({title:'Interia' ,url:'http://kanaly.rss.interia.pl/fakty.xml',limit:9,color:'#fff'});	
-rssy[x].push({title:'WP' ,url:'http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml',limit:9,color:'#fff'});	
-rssy[x].push({title:'TVN24' ,url:'http://www.tvn24.pl/najnowsze.xml',limit:9,color:'#fff'});	
+x++; rssy[x]=[];		sekcje[x]='Portale';	kolory[x]='#444';
+rssy[x].push({title:'Interia' ,url:'http://kanaly.rss.interia.pl/fakty.xml',limit:9});	
+rssy[x].push({title:'WP' ,url:'http://wiadomosci.wp.pl/kat,1329,ver,rss,rss.xml',limit:9});	
+rssy[x].push({title:'TVN24' ,url:'http://www.tvn24.pl/najnowsze.xml',limit:9});	
 rssy[x].push({title:'TOK-FM' ,url:'http://www.tokfm.pl/pub/rss/tokfmpl_glowne.xml',limit:9});	
 rssy[x].push({title:'ŚwiatCzytników' ,url:'http://rss.swiatczytnikow.pl/SwiatCzytnikow',limit:9});	
 rssy[x].push({title:'RadioM' ,url:'http://www.radiomaryja.pl/feed/',limit:9});	
 //rssy[x].push({title:'' ,url:'',limit:9});	
-rssy[x].push({title:'Signs' ,url:'http://www.signs.pl/backend.php?cat=Warsztat',limit:4,color:'#fff'});	
+rssy[x].push({title:'Signs' ,url:'http://www.signs.pl/backend.php?cat=Warsztat',limit:4});	
 // onet- starocie
 
 
