@@ -105,7 +105,7 @@ function szukaj_img(link,content){
  
 /* share*/
 
-
+//http://stackoverflow.com/questions/8305855/android-how-to-use-the-phonegap-share-plugin
 var Share = function() {};       
 Share.prototype.show = function(content, success, fail) {
     return cordova.exec( function(args) {
