@@ -105,7 +105,7 @@ function szukaj_img(link,content){
  
 /* share*/
 
-
+/*
 var Share = function() {};       
 Share.prototype.show = function(content, success, fail) {
     return cordova.exec( function(args) {
@@ -114,8 +114,8 @@ Share.prototype.show = function(content, success, fail) {
         fail(args);
     }, 'Share', '', [content]);
 };
-
-if(!window.plugins) {
+*/
+if (!window.plugins) {
     window.plugins = {};
 }
 if (!window.plugins.share) {
@@ -144,21 +144,12 @@ function podzielsie(){
         anchor.dispatchEvent(dispatch);
     }
 
-	
-//function open2(url){
-//window.location.href = url;
-//}
 
-function open2(url){
+
+function loadURL(url){
 navigator.app.loadUrl(url, { openExternal:true } ); 
 }
-function open3(url){
-navigator.app.loadUrl(url, { openExternal:false } ); 
-}
 
-function loadURL(url){ 
-navigator.app.loadUrl(url, { openExternal:true }); 
-}
 
 /* DEBUG ----------------------------
 ------------------------------------won */
