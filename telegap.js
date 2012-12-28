@@ -105,7 +105,7 @@ function szukaj_img(link,content){
  
 /* share*/
 
-/*
+
 var Share = function() {};       
 Share.prototype.show = function(content, success, fail) {
     return cordova.exec( function(args) {
@@ -114,7 +114,7 @@ Share.prototype.show = function(content, success, fail) {
         fail(args);
     }, 'Share', '', [content]);
 };
-*/
+
 if (!window.plugins) {
     window.plugins = {};
 }
@@ -127,13 +127,20 @@ function podzielsie(){
 	share.show({
 		subject: 'Jestem ZnakZorro',
 		text: 'http://szczech.com.pl'},
-		function() {}, // Success function
-		function() {alert('Share failed')} // Failure function
+		function() {alert('sukces share 1')}, // Success function
+		function() {alert('Share failed 1')} // Failure function
 
 	); 
 }
 
+function podzielsie2(){
+	var share = new Share();
+	share.show('Jestem ZnakZorro',
+		function() {alert('sukces share 2')}, // Success function
+		function() {alert('Share failed 2')} // Failure function
 
+	); 
+}
  //function openInWebView(url){
   function open1(url){
         var anchor = document.createElement('a');
