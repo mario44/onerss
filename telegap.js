@@ -138,21 +138,27 @@ function podzielsie(){
   function open1(url){
         var anchor = document.createElement('a');
         anchor.setAttribute('href', url);
-        //anchor.setAttribute('target', '_self');
-        
+        anchor.setAttribute('target', '_blank');
         var dispatch = document.createEvent('HTMLEvents')
         dispatch.initEvent('click', true, true);
-        
         anchor.dispatchEvent(dispatch);
     }
 
 	
+//function open2(url){
+//window.location.href = url;
+//}
+
 function open2(url){
-window.location.href = url;
+navigator.app.loadUrl(url, { openExternal:true } ); 
+}
+function open3(url){
+navigator.app.loadUrl(url, { openExternal:false } ); 
 }
 
-
-
+function loadURL(url){ 
+navigator.app.loadUrl(url, { openExternal:true }); 
+}
 
 /* DEBUG ----------------------------
 ------------------------------------won */
