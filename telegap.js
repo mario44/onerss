@@ -66,6 +66,7 @@ function deltaCzas(date){
 
 
 function korekta_link(link,content){
+//console.log(link);
 	var agora=link.match(/gazeta|wyborcza/);
 	if (agora){
 		var szukaj_link=content.match(/(<a href.*?>)/gi);
@@ -77,6 +78,7 @@ function korekta_link(link,content){
 			link=link.replace(/http:\/\//,'http://m.');  
 			}	
 	}
+//console.log(link);
 	return link;
 }
 

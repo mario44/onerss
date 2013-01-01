@@ -64,7 +64,22 @@ function moveID(kier){
 	//document.getElementById('test').innerHTML+='  M='+kier+'='+opiszID();
 }
 
-
+   	function gonext() {
+		var idmax=rssy.length;
+		var id=czytajID();
+		id++;
+		if (id>=idmax) id=0;
+		zapiszID(id);
+		rssfeedsetup(id);
+	}
+   	function goback() {
+		var idmax=rssy.length-1;
+		var id=czytajID();
+		id--;
+		if (id<0) id=idmax;
+		zapiszID(id);
+		rssfeedsetup(id);
+	}
 
    	function goforwad() {
 		document.getElementById("menu").style.display="none";
@@ -73,19 +88,20 @@ function moveID(kier){
 		onMenuKeyDown();
 	}
 	
-   	function goback()   {
+   	function goback___()   {
 		document.getElementById("menu").style.display="none";
 		zapal();
 		window.scrollTo(0,0);
 		onBackKeyDown();
 	}
 
-	function koniec(){
-		//To exit the application:
-		navigator.app.exitApp()
-		//To use the back button:
-		//navigator.app.backHistory()
-	}
+function koniec(){
+	try  {navigator.app.exitApp();}
+	catch(err) {
+	  window.scrollTo(0,0);
+	  }
+	
+}
 	
     function onDeviceReady() {
 		//document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
@@ -201,10 +217,7 @@ function moveID(kier){
     function displayfeed(result){
 		var godzin=localStorage.getItem('czas') || 24;
 		var last=localStorage.getItem('last') || 0;
-		
-			var title=result.feed.title || 'Portal';
-
-			
+			var title=result.feed.title || 'Portal';	
 			if (sekcja!='WIZUT') {
 				//var arr=title.split(' '); arr=arr.slice(0,3); title=arr.join(' ');
 				title=title.replace('Zachodniopomorski Uniwersytet Technologiczny','ZUT');
@@ -281,7 +294,7 @@ function moveID(kier){
  <!-- 
   <div><a href="javascript:void(0);" onClick="onMenuKeyDown();" class="btn">Menu</a> &nbsp; <b> PhoneGap test cordova</b></div>
   -->
-   <div id="menu" style="display:none; position:fixed; left:0; bottom:49px; background:#888; padding:2px; z-index:2;border-top:1px solid #444;"> 
+   <div id="menu" style="width:100%; display:none; position:fixed; left:0; bottom:49px; background:#888; padding:2px; z-index:2;border-top:1px solid #444;"> 
   	<button onClick="pokazFEED(0);" class="btn btn-info">Szczecin</button>
   	<button onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</button>
   	<button onClick="pokazFEED(2);" class="btn btn-primary">InfoTech</button>
@@ -292,7 +305,8 @@ function moveID(kier){
   	<button onClick="pokazFEED(7);" class="btn btn-inverse">Portale</button>
   	<button onClick="pokazFEED(8);" class="btn btn-inverse">Allegro</button>	
  	<button onClick="viewInfo();"   class="btn btn-warning">InfoSzczecin</button>	
- 	<button onClick="deviceInfo();" class="btn btn-warning">device Info</button>
+ 	<!--button onClick="deviceInfo();" class="btn btn-warning">device Info</button-->
+	 &nbsp;   &nbsp;  
  	<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
 	
 		<div class="batony" id="strefa_czasu">
@@ -324,38 +338,60 @@ function moveID(kier){
 -->
    
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#222; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.8;z-index:2;border-top:1px solid #444;">
- 	<button onClick="goback();"  class="btn btn-primary btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button> 
-	<button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button>
-		&nbsp; 
-		<button onClick="viewLSlinki();" class="btn btn-danger">Linki</button>
-		<button onClick="loadURL('http://zszczech.zut.edu.pl/l/');" class="btn">zURL</button>
-		
-
-
-	<!--
-	<button onClick="window.localStorage.clear();onLoad();" class="btn2 btn-inverse">LS.clear</button>
-	<button onClick="podzielsie();" class="btn2 btn-info">Sh1</button>
-	<button onClick="podzielsie2();" class="btn2 btn-info">Sh2</button>
-	-->
- 	<button onClick="goforwad();"  class="btn btn-primary btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
+ 	<button onClick="goback();"  class="btn btn-primary btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button>  &nbsp;  &nbsp; 
+		<button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> &nbsp;  
+		<button onClick="viewLSlinki();" class="btn btn-danger">Linki</button> &nbsp;  
+		<button onClick="loadURL('http://zszczech.zut.edu.pl/l/');" class="btn">zURL</button> &nbsp;  
+ 	<button onClick="gonext();"  class="btn btn-primary btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
 </div>
 
 
 
-<br /><br /><br /><br />
+<br /><br /><br />
 
 
 <div id="popup" class="box">
 		<div id="popup_header"><h4 id="popup_title">Tytuł</h4> <a href="javascript:void(0)" class="btn btn-danger" onClick="popup_close();"> &nbsp; X &nbsp; </a></div>
 		<div id="popup_body" class="box">   
-			<!--a href="#" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Zapisz link</a-->
-			<button class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Zapisz link</button>
+	
 		</div>
 		<div id="popup_info"></div>
 		<div id="popup_config"><span class="btn btn-info" id="viewConfig">Config</span></div>
 		<div id="popup_menu"></div>
 		<div id="popup_footer"> <a href="javascript:void(0)" class="btn btn-danger"  onClick="popup_close();">Close</a></div>
-	</div>
+</div>
 
+<!--	
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://strona.pl" data-text="tytul" data-via="znakzorro" data-lang="pl" data-count="none">Tweetnij</a>
+<br /><br /><br /><br />
+
+<script>
+(function(d,s,id){
+	var js,fjs=d.getElementsByTagName(s)[0];
+	if(!d.getElementById(id)){
+		js=d.createElement(s);
+		js.id=id;
+		js.src="http://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js,fjs);
+	}
+})
+(document,"script","twitter-wjs");
+</script>
+-->	
+<script type="text/javascript">
+
+//Socialite
+/*
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+  */
+//Socialite  
+</script>
+	
+	
+	
   </body>
 </html>

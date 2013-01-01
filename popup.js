@@ -25,6 +25,16 @@ xmlhttp.send();
 			//<!-- moje swoje -->
 			html_btn+='<a href="javascript:void(0)" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </a> ';	
 			html_btn+='</div>';
+	//Socialite
+	/*twitter*/
+	html_btn+='<div>';
+			html_btn+=' &nbsp; <a href="https://twitter.com/share" class="twitter-share-button" data-url="'+link+'" data-text="'+title+'" data-via="znakzorro" data-lang="pl" data-count="none" rel="nofollow" target="_blank">Tweetnij</a>';	
+			html_btn+=' &nbsp; <a href="https://plus.google.com/share?url='+link+'" class="" data-size="tall" data-href="'+link+'" rel="nofollow" target="_blank"><img src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+"/></a>';			
+			html_btn+=' &nbsp; <a href="http://www.facebook.com/sharer.php?u='+link+'&amp;t='+title+'" class="" data-href="'+link+'" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank">Share on Facebook</a>';
+		html_btn+='</div>';			
+	//Socialite		
+	
+  
 		document.getElementById('popup_body').innerHTML=html_btn;
 		document.getElementById('popup').style.display='block';
 		document.getElementById('popup_title').innerHTML=title;
@@ -35,8 +45,34 @@ xmlhttp.send();
 		document.getElementById('popup_zapisz_link').setAttribute('rel-lokalizacja',lokalizacja);
 		document.getElementById('popup_zapisz_link').setAttribute('rel-sekcja',sekcja);
 		//document.getElementById('popup_info').innerText='Mobile='+mobile+' | '+navigator.userAgent.toLowerCase();
-
+		
+		/*twitter*/
+		/*
+			(function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0];
+				if(!d.getElementById(id)){
+					js=d.createElement(s);
+					js.id=id;
+					js.src="http://platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js,fjs);
+				}
+			})
+			(document,"script","twitter-wjs");
+			*/
+		/*google plus*/
+		/*
+		window.___gcfg = {lang: 'pl'};
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+		*/
+		/********************/
+		
 	}
+	
+	
 	// popup 	close
 	function popup_close() {
 		document.getElementById('popup_info').innerHTML='';
