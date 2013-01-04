@@ -314,7 +314,8 @@ function koniec(){
 		}
 		rssoutput+='</div>';
 
-		if (rssoutput.length>50){
+		if (rssoutput.length>50) rssoutput='<p>'+rssoutput+' :: nic nowego</p>';
+		{
 			el.innerHTML+=rssheader+rssoutput;
 			el.style.display='block';
 		}
