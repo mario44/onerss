@@ -83,7 +83,9 @@ function korekta_link(link,content){
 	var agora=link.match(/gazeta|wyborcza/);
 	if (agora){
 		var szukaj_link=content.match(/(<a href.*?>)/gi);
-		if (szukaj_link) {
+		
+		if (szukaj_link && szukaj_link[1]) {
+		//console.log(szukaj_link)
 			var linkarr=(szukaj_link[1].match(/;link=(.*?)">/));
 			if (linkarr) {
 				link=decodeURIComponent(linkarr[1]);
