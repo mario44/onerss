@@ -15,26 +15,22 @@
  	<script type="text/javascript" charset="utf-8" src="popup.js"></script>
  	
 <script type="text/javascript" charset="utf-8">
+var ___moje='eede2de857491ec7';
+var ___self=false;
+
 var menuOpen=false;
 	google.load("feeds", "1");
 
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-        pokazFEED(czytajID());
-		document.getElementById("viewConfig").onclick=function(){viewConfig()};
-		
-		// font
-		var font_family = localStorage.getItem('_font_');
-		var font_size   = localStorage.getItem('_font_size_') || 15;
-		if (font_size || font_family){
-			var sheet_font = document.createElement('style');
-			sheet_font.innerHTML = 'body {';
-				if (font_size)   sheet_font.innerHTML += 'font-size:'+font_size+'px;';
-				if (font_family) sheet_font.innerHTML += 'font-family:"'+font_family+'";';
-			sheet_font.innerHTML += '}';
-			document.body.appendChild(sheet_font);			
+
+		// device.platform device.uuid
+		try {
+			if (device.uuid) {document.getElementById('infotest').innerHTML=device.platform+'<br />'+device.uuid;}
 			}
-		// --font
+		catch(err) {
+			onDeviceReady();
+			}
 	
     }
 
@@ -112,6 +108,10 @@ function koniec(){
 }
 	
     function onDeviceReady() {
+		try {if (device.uuid == ___moje) ___self=true;}
+		catch(er) {}
+
+
 		//document.getElementById('feeddiv').innerHTML='<h1>Czekamy</h1>';
 		document.addEventListener("resume", onResume, false);
 		document.addEventListener("pause", onPause, false);
@@ -122,7 +122,27 @@ function koniec(){
 		//document.getElementById('test').innerHTML='onDeviceReady end<br />';        
 	    //pokazFEED();	
 		
-		document.getElementById('infotest').innerHTML+=device.uuid+'<br />';
+		//document.getElementById('infotest').innerHTML+=device.uuid+'<br />';
+		//document.getElementById('infotest').innerHTML+=device.platform+'<br />';
+		
+		
+        pokazFEED(czytajID());
+		document.getElementById("viewConfig").onclick=function(){viewConfig()};
+		
+		// font
+		var font_family = localStorage.getItem('_font_');
+		var font_size   = localStorage.getItem('_font_size_') || 15;
+		if (font_size || font_family){
+			var sheet_font = document.createElement('style');
+			sheet_font.innerHTML = 'body {';
+				if (font_size)   sheet_font.innerHTML += 'font-size:'+font_size+'px;';
+				if (font_family) sheet_font.innerHTML += 'font-family:"'+font_family+'";';
+			sheet_font.innerHTML += '}';
+			document.body.appendChild(sheet_font);			
+			}
+		// --font		
+		
+		
     }
 
    
@@ -139,6 +159,15 @@ function koniec(){
     }
 	
 	function onOffline() {
+		///////////////
+		navigator.notification.alert(
+		'You are the winner!',  // message
+		alertDismissed,         // callback
+		'Game Over',            // title
+		'Done'                  // buttonName
+		);
+		///////////
+		
 		document.getElementById('test').innerHTML='onOffline<br />';
 		var id=czytajID();
 		moveID(-1);
@@ -351,8 +380,8 @@ function koniec(){
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#222; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.8;z-index:2;border-top:1px solid #444;">
  	<button onClick="goback();"  class="btn btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button>  &nbsp;  &nbsp; 
 		<button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> &nbsp;  
-		<button onClick="viewLSlinki();" class="btn btn-danger">Linki</button> &nbsp;  
-		<button onClick="loadURL('http://zszczech.zut.edu.pl/l/');" class="btn">zURL</button> &nbsp;  
+		<button onClick="viewLSlinki(___self);" class="btn btn-danger">Linki</button> &nbsp;  
+		<button onClick="viewRemotelinki(___self);" class="btn">zURL</button> &nbsp;  
  	<button onClick="gonext();"  class="btn btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
 </div>
 

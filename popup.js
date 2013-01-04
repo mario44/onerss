@@ -15,6 +15,7 @@ xmlhttp.send();
 
 	// popup 	open
 	function popup_open(ten) {
+		zapal();
 		var title=ten.getAttribute('rel-title');
 		var link=ten.getAttribute('rel-link');
 		var lokalizacja=ten.getAttribute('rel-lokalizacja');
@@ -23,15 +24,17 @@ xmlhttp.send();
 		var	html_btn ='<div class="well">';
 			html_btn+='<a href="javascript:void(0)" class="btn btn-danger" onClick="zapisz_LS_link(this);" id="popup_zapisz_LS_link">Zapisz moje linki</a> ';
 			//<!-- moje swoje -->
-			html_btn+='<a href="javascript:void(0)" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </a> ';	
+			if (___self) html_btn+='<a href="javascript:void(0)" class="btn btn-primary" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </a> ';	
 			html_btn+='</div>';
 	//Socialite
 	/*twitter*/
+	if (___self) {
 	html_btn+='<div>';
 			html_btn+=' &nbsp; <a href="https://twitter.com/share" class="twitter-share-button" data-url="'+link+'" data-text="'+title+'" data-via="znakzorro" data-lang="pl" data-count="none" rel="nofollow" target="_blank">Tweetnij</a>';	
 			html_btn+=' &nbsp; <a href="https://plus.google.com/share?url='+link+'" class="" data-size="tall" data-href="'+link+'" rel="nofollow" target="_blank"><img src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+"/></a>';			
 			html_btn+=' &nbsp; <a href="http://www.facebook.com/sharer.php?u='+link+'&amp;t='+title+'" class="" data-href="'+link+'" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" rel="nofollow" target="_blank">Share on Facebook</a>';
 		html_btn+='</div>';			
+	}
 	//Socialite		
 	
   
@@ -40,10 +43,12 @@ xmlhttp.send();
 		document.getElementById('popup_title').innerHTML=title;
 		document.getElementById('popup_zapisz_LS_link').setAttribute('rel-title',title);
 		document.getElementById('popup_zapisz_LS_link').setAttribute('rel-link',link);
+		if (___self){
 		document.getElementById('popup_zapisz_link').setAttribute('rel-title',title);
 		document.getElementById('popup_zapisz_link').setAttribute('rel-link',link);
 		document.getElementById('popup_zapisz_link').setAttribute('rel-lokalizacja',lokalizacja);
 		document.getElementById('popup_zapisz_link').setAttribute('rel-sekcja',sekcja);
+		}
 		//document.getElementById('popup_info').innerText='Mobile='+mobile+' | '+navigator.userAgent.toLowerCase();
 		
 		/*twitter*/
@@ -114,7 +119,12 @@ xmlhttp.send();
 		localStorage.setItem('_rss_linki',store_linki);
 	}
 	
-	function viewLSlinki(){
+	function viewRemotelinki(___self){
+		if (___self) loadURL('http://zszczech.zut.edu.pl/l/');
+		else viewLSlinki(___self);
+	}
+	
+	function viewLSlinki(___self){
 		var get_linki = localStorage.getItem('_rss_linki');
 		var arr=JSON.parse(get_linki);
 		if (!arr) return false;
