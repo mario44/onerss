@@ -22,11 +22,19 @@ var menuOpen=false;
         document.addEventListener("deviceready", onDeviceReady, false);
         pokazFEED(czytajID());
 		document.getElementById("viewConfig").onclick=function(){viewConfig()};
-		var font = localStorage.getItem('_font_');
-		var font_size = localStorage.getItem('_font_size_') || 15;
 		
-
-	//document.getElementById('test').innerHTML+='onLoad<br />';
+		// font
+		var font_family = localStorage.getItem('_font_');
+		var font_size   = localStorage.getItem('_font_size_') || 15;
+		if (font_size || font_family){
+			var sheet_font = document.createElement('style');
+			sheet_font.innerHTML = 'body {';
+				if (font_size)   sheet_font.innerHTML += 'font-size:'+font_size+'px;';
+				if (font_family) sheet_font.innerHTML += 'font-family:"'+font_family+'";';
+			sheet_font.innerHTML += '}';
+			document.body.appendChild(sheet_font);			
+			}
+		// --font
 	
     }
 
@@ -113,6 +121,8 @@ function koniec(){
 		document.addEventListener("menubutton", onMenuKeyDown, false);		
 		//document.getElementById('test').innerHTML='onDeviceReady end<br />';        
 	    //pokazFEED();	
+		
+		document.getElementById('infotest').innerHTML+=device.uuid+'<br />';
     }
 
    
@@ -289,7 +299,7 @@ function koniec(){
  </head>
  
  
- <body onload="onLoad()">
+ <body onload="onLoad()" id="body">
 
   
  <!-- 
@@ -347,7 +357,7 @@ function koniec(){
 </div>
 
 
-
+<div id='infotest'></div>
 <br /><br /><br />
 
 
@@ -390,6 +400,7 @@ function koniec(){
   })();
   */
 //Socialite  
+
 </script>
 	
 	

@@ -152,8 +152,9 @@ function viewConfig(){
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[14]+'" onClick="configFont(\'*\',\'14\');">14</a> ';
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[15]+'" onClick="configFont(\'*\',\'15\');">15</a> ';
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[16]+'" onClick="configFont(\'*\',\'16\');">16</a> ';
-		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[17]+'" onClick="configFont(\'*\',\'17\');">17</a> ';
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[18]+'" onClick="configFont(\'*\',\'18\');">18</a> ';
+		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[20]+'" onClick="configFont(\'*\',\'20\');">20</a> ';
+		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[22]+'" onClick="configFont(\'*\',\'22\');">22</a> ';
 		html+=' px</div>';
 		document.getElementById('popup').style.display='block';
 		document.getElementById('popup_title').innerHTML='Config - <small>Ustaw font i jego rozmiar.</small>';
@@ -172,7 +173,7 @@ function viewConfig(){
 			if (font)  localStorage.setItem('_font_',font);
 		}
 		if (size) {localStorage.setItem('_font_size_',size);}
-		//location.reload();
+		location.reload();
 	}
 
 	
