@@ -314,7 +314,11 @@ function koniec(){
 		}
 		rssoutput+='</div>';
 
-		if (rssoutput.length>50) rssoutput='<p>'+rssoutput+' :: nic nowego</p>';
+		if (rssoutput.length<50) {
+			rssheader='';
+			rssoutput='<p class="title"> &nbsp; \u2248 '+title+' :: nic nowego</p>';
+			}
+			
 		{
 			el.innerHTML+=rssheader+rssoutput;
 			el.style.display='block';
