@@ -43,6 +43,7 @@ table.traffic tr.sectiontableheader {background:#444; color:#fff;}
 
 
 .btn-line {line-height:0 !important; padding:4px 8px !important;}
+.btn-next {float:left; line-height:15px;font-size:21px; font-weight:bold;}
 div#menu .btn {min-width:5em;}
 
 

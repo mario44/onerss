@@ -2,6 +2,19 @@
 function korekta_link(link,content)
 function szukaj_img(link,content)
 */
+var $=function kapiszon(id) {
+	var prefix=id[0];
+	var iid=id.slice(1,id.length);
+
+	switch (prefix){
+		case '#':	return document.getElementById(iid);   			break;
+		case '.':	return document.getElementsByClassName(iid);  	break;
+		default:	return document.getElementsByTagName(id); 
+		}
+		
+	}
+
+
    function zgas() {document.getElementById("feeddiv").style.opacity='0.5';}
    	function zapal(){document.getElementById("feeddiv").style.opacity='1.0';}
    	function kasuj(){document.getElementById("feeddiv").innerHTML='';}

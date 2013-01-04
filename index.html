@@ -199,7 +199,8 @@ function koniec(){
     	//document.getElementById('test').innerHTML+='rss '+id+' '+opiszID();
 		kasuj();
 		//document.getElementById("feeddiv").innerHTML='<h1 class="hh1" style="background:'+kolory[id]+'">'+sekcje[id]+'</h1>';
-		document.getElementById("feeddiv").innerHTML='<h2 id="title">'+sekcje[id]+' / '+godzin+'h</h2>';
+		
+		document.getElementById("feeddiv").innerHTML='<h2 id="title"><button onClick="gonext();"  class="btn btn-next"> \u00BB  </button> '+sekcje[id]+' / '+godzin+'h</h2>';
 		for(var i in rssy[id]) {
 		//console.log(i);
 			var v = rssy[id][i].url;
@@ -297,13 +298,13 @@ function koniec(){
    <div id="menu" style="width:100%; display:none; position:fixed; left:0; bottom:49px; background:#888; padding:2px; z-index:2;border-top:1px solid #444;"> 
   	<button onClick="pokazFEED(0);" class="btn btn-info">Szczecin</button>
   	<button onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</button>
-  	<button onClick="pokazFEED(2);" class="btn btn-primary">InfoTech</button>
-  	<button onClick="pokazFEED(3);" class="btn btn-primary">Dzone</button>
-  	<button onClick="pokazFEED(4);" class="btn btn-primary">WebDev</button>
-  	<button onClick="pokazFEED(5);" class="btn btn-primary">Code</button>
-  	<button onClick="pokazFEED(6);" class="btn btn-success">WIZUT</button>
-  	<button onClick="pokazFEED(7);" class="btn btn-inverse">Portale</button>
-  	<button onClick="pokazFEED(8);" class="btn btn-inverse">Allegro</button>	
+  	<button onClick="pokazFEED(2);" class="btn btn-inverse">Portale</button>
+  	<button onClick="pokazFEED(3);" class="btn btn-primary">InfoTech</button>
+  	<button onClick="pokazFEED(4);" class="btn btn-primary">Dzone</button>
+  	<button onClick="pokazFEED(5);" class="btn btn-primary">WebDev</button>
+  	<button onClick="pokazFEED(6);" class="btn btn-primary">Code</button>
+  	<button onClick="pokazFEED(7);" class="btn btn-inverse">Allegro</button>	
+  	<button onClick="pokazFEED(8);" class="btn btn-success">WIZUT</button>
  	<button onClick="viewInfo();"   class="btn btn-warning">InfoSzczecin</button>	
  	<!--button onClick="deviceInfo();" class="btn btn-warning">device Info</button-->
 	 &nbsp;   &nbsp;  
@@ -338,11 +339,11 @@ function koniec(){
 -->
    
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#222; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.8;z-index:2;border-top:1px solid #444;">
- 	<button onClick="goback();"  class="btn btn-primary btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button>  &nbsp;  &nbsp; 
+ 	<button onClick="goback();"  class="btn btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button>  &nbsp;  &nbsp; 
 		<button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> &nbsp;  
 		<button onClick="viewLSlinki();" class="btn btn-danger">Linki</button> &nbsp;  
 		<button onClick="loadURL('http://zszczech.zut.edu.pl/l/');" class="btn">zURL</button> &nbsp;  
- 	<button onClick="gonext();"  class="btn btn-primary btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
+ 	<button onClick="gonext();"  class="btn btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
 </div>
 
 

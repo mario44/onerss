@@ -3,10 +3,10 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.onerss"
         versionCode="10" 
-        version   = "2.2.0">
+        version   = "2.5.0">
 
 
-    <name>ZnakZorro-OneRSS-links</name>
+    <name>ZnakZorro-OneRSS</name>
 
     <description>
         OneRss powered by PhoneGap 
@@ -25,10 +25,10 @@
 <icon src="pliki/icon-72.png" gap:platform="android" gap:density="mdpi" />
 <icon src="pliki/icon-144.png" gap:platform="android" gap:density="hdpi" />
 <icon src="pliki/icon-144.png" gap:platform="android" gap:density="xhdpi" />
-    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="pliki/onerss.jpg"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="pliki/onerss.jpg" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="pliki/onerss.png" gap:platform="android" gap:density="xhdpi" />
 
 
 
