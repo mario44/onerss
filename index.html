@@ -2,12 +2,26 @@
 <html>
   <head>
   <meta charset="utf-8">
+  <title>OneRSS 2.0</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="bootstrap.mi.css">
 	<link rel="stylesheet" href="telegap.css">
-	
-    	<title>OneRSS 2.0</title>
+<style>
+	article {
+		width: 47.9%;
+		float: left;
+		margin: 1%;
+	}
+@media (max-width:979px){
+	article {
+		width: 100%;
+		float: none;
+		margin: 0;
+	}
+}
+</style>		
+    	
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
  	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
@@ -243,7 +257,7 @@ function koniec(){
 		for(var i in rssy[id]) {
 		//console.log(i);
 			var v = rssy[id][i].url;
-			var feedlimit=rssy[id][i].limit || 8;
+			var feedlimit=rssy[id][i].limit || 6;
 			var j=parseInt(i)+1;
 			uidiv(v,j);
 			var feedpointer=new google.feeds.Feed(v);

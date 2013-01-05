@@ -1,5 +1,5 @@
 <h1>One Rss</h1>
 =======
-<p>Pierwszy test systemu <b>phonegap</b></p>
+<p><b> Czytnik RSS by ZZ</b></p>
 ===
-menu moved to bottom
+fork and edit 
