@@ -165,6 +165,7 @@ function viewConfig(){
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[18]+'" onClick="configFont(\'*\',\'18\');">18</a> ';
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[20]+'" onClick="configFont(\'*\',\'20\');">20</a> ';
 		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[22]+'" onClick="configFont(\'*\',\'22\');">22</a> ';
+		html+='<a href="javascript:void(0)" class="btn btn-info '+fs[25]+'" onClick="configFont(\'*\',\'25\');">25</a> ';
 		html+=' px</div>';
 		document.getElementById('popup').style.display='block';
 		document.getElementById('popup_title').innerHTML='Config - <small>Ustaw font i jego rozmiar.</small>';
@@ -197,7 +198,7 @@ function viewConfig(){
 		if (czas) {
 		//console.log(czas);
 			localStorage.setItem('czas',czas);
-			//location.reload();
+			location.reload();
 		}
 	}
 	
@@ -206,11 +207,11 @@ function viewConfig(){
 		var teraz = new Date();
 		var mteraz=Date.parse(teraz);
 		localStorage.setItem('last',mteraz);
-		//location.reload();
+		location.reload();
 	}
 	
 	function kasuj_czas() {
 		localStorage.removeItem('last');
-		//location.reload();
+		location.reload();
 	}
 	

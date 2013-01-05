@@ -8,6 +8,7 @@ h1 {font: 1.7em;line-height: 110%;color: #000;}
 h1, h2, h3 {color: #000;}
 h4 {border:none; padding:0;margin:0; color:#000;}
 p {	margin: 0 0 20px;}
+p.title {background:#eee; margin:0; padding:4px;}
 #pagewrap {max-width: 98%;margin: 0 auto;}
 .wrapper {overflow: hidden;}
 #menu {}
@@ -37,13 +38,13 @@ table.traffic tr.sectiontableentry2 {background:#f4f4f4;}
 table.traffic tr.sectiontableheader {background:#444; color:#fff;}
 
 .box {/*-webkit-border-radius:9px 9px 9px 9px; border-radius:9px 9px 9px 9px;*/}
-#title {text-align:center;color:white; padding:0.25%; margin:0; background:#248;}
+#title {text-align:center;color:white; padding:0.5%; margin:0; background:#248;}
 
 
 
 
 .btn-line {line-height:0 !important; padding:4px 8px !important;}
-.btn-next {float:left; line-height:15px;font-size:21px; font-weight:bold;}
+.btn-next {float:left; line-height:20px;font-size:23px; font-weight:bold;}
 div#menu .btn {min-width:5em;}
 
 

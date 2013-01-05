@@ -2,14 +2,14 @@
 <html>
   <head>
   <meta charset="utf-8">
-  <title>OneRSS 2.0</title>
+  <title>OneRSS 3.0</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="bootstrap.mi.css">
 	<link rel="stylesheet" href="telegap.css">
 <style>
 	article {
-		width: 47.9%;
+		width: 47.95%;
 		float: left;
 		margin: 1%;
 	}
@@ -330,7 +330,7 @@ function koniec(){
 
 		if (rssoutput.length<50) {
 			rssheader='';
-			rssoutput='<p class="title"> &nbsp; \u2248 '+title+' :: nic nowego</p>';
+			rssoutput='<p class="title"> &nbsp; \u2248 '+title+'  &nbsp; \u2248 </p>';
 			}
 			
 		{
@@ -398,7 +398,7 @@ function koniec(){
    
 <div id="menufooter" style="position:fixed; left:0px; bottom:0px; background:#222; float:left; width:96%; padding:0.1% 2%; margin:0; opacity:0.8;z-index:2;border-top:1px solid #444;">
  	<button onClick="goback();"  class="btn btn-line" style="float:left;"><img src="pliki/arr-left.png" /></button>  &nbsp;  &nbsp; 
-		<button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> &nbsp;  
+		<button onClick="onMenuKeyDown();" class="btn btn-primary">Menu</button> &nbsp;  
 		<button onClick="viewLSlinki(___self);" class="btn btn-danger">Linki</button> &nbsp;  
 		<button onClick="viewRemotelinki(___self);" class="btn">zURL</button> &nbsp;  
  	<button onClick="gonext();"  class="btn btn-line" style="float:right;"><img src="pliki/arr-right.png" /></button> 
