@@ -25,7 +25,7 @@
     	
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript" charset="utf-8" src="js/kapiszon.js"></script>
- 	<script type="text/javascript" charset="utf-8" src="js/rssone.list.js"></script>
+ 	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
  	<script type="text/javascript" charset="utf-8" src="js/telegap.js"></script>
  	<script type="text/javascript" charset="utf-8" src="js/popup.js"></script>
@@ -290,8 +290,14 @@ function koniec(){
 		var thefeeds=result.feed.entries;
 		
 		var rssoutput='<div class="arty box">';
-		
-		for (var i=0; i<thefeeds.length; i++) {
+		var j=0;
+		var ilefeeds=thefeeds.length;
+		//console.log(rssy[id]);
+		//var ftitle=rssy[id][i].title;
+		//console.log(id+' '+i+' '+ftitle);
+
+		for (var i=0; i<ilefeeds; i++) {
+			j=i+1;
 					// czas  -----------------------------------------
 					
 					var delta = deltaCzas(thefeeds[i].publishedDate);
@@ -314,10 +320,10 @@ function koniec(){
 				rssoutput+=toDate(thefeeds[i].publishedDate);
 			rssoutput+="</button>";
 			//rssoutput+="<a href='" + link + "' class='title' title='Internet' target='_blank' rel='external' >" + thefeeds[i].title + "</a>";
-			rssoutput+="<a href='javascript:void(0);' onClick='loadURL(\""+link+"\");' class='title' title='Internet' target='_blank' rel='external' >" + thefeeds[i].title + "</a>";
+			rssoutput+="<a href='javascript:void(0);' onClick='loadURL(\""+link+"\");' class='title' title='Internet' target='_blank' rel='external' >"+j+". " + thefeeds[i].title + "</a>";
 			//rssoutput+="<a class='btn btn-small' href='javascript:void(0);' onClick='loadURL(\""+link+"\");' > [>>>] </a>";
 			rssoutput+="<div class='well'>";		
-				rssoutput+="<div class='image'>"+image+"</div>";		
+				rssoutput+="<div class='image'>"+image+"</div>";			
 				rssoutput+=thefeeds[i].contentSnippet;		
 			rssoutput+="</div>";		
 			rssoutput+='</div>';
@@ -326,12 +332,12 @@ function koniec(){
 
 		if (rssoutput.length<50) {
 			rssheader='';
-			rssoutput='<p class="title"> &nbsp; \u2248 '+title+'  &nbsp; \u2248 </p>';
+			rssoutput='<p class="title"> &nbsp; \u2248 '+title+'&nbsp; \u2248 </p>';
 			}
 			
 		{
 			el.innerHTML+=rssheader+rssoutput;
-			el.style.display='block';
+			el.style.display='inline-block';
 		}
     }
 // =================================================================	

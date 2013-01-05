@@ -27,8 +27,8 @@
 <icon src="pliki/icon-144.png" gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="pliki/onerssa.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="pliki/onerssa.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="pliki/onerss.png" gap:platform="android" gap:density="xhdpi" />
 
 
 

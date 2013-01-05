@@ -22,13 +22,14 @@ xmlhttp.send();
 		var sekcja=ten.getAttribute('rel-sekcja');
 		
 		var	html_btn ='<div class="well">';
-			html_btn+='<a href="javascript:void(0)" class="btn btn-primary" onClick="zapisz_LS_link(this);" id="popup_zapisz_LS_link">Zapisz moje linki</a> ';
+			//html_btn+='<a href="javascript:void(0)" class="btn btn-primary" onClick="zapisz_LS_link(this);" id="popup_zapisz_LS_link">Zapisz moje linki</a> ';
 			//<!-- moje swoje -->
-			if (___self) html_btn+='<a href="javascript:void(0)" class="btn btn-danger" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </a> ';	
+			//if (___self) html_btn+='<a href="javascript:void(0)" class="btn btn-danger" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </a> ';	
 			
-			html_btn+='<button class="btn btn-primary" onClick="zapisz_LS_link(this);" id="popup_zapisz_LS_link">Zapisz moje linki</button> ';
 			//<!-- moje swoje -->
+			//if (___self) 
 			html_btn+='<button class="btn btn-danger" onClick="zapisz_link(this);" id="popup_zapisz_link">Udostępnij URL </button> ';	
+			html_btn+='<button class="btn btn-primary" onClick="zapisz_LS_link(this);" id="popup_zapisz_LS_link">Zapisz moje linki</button> ';
 			
 			
 			html_btn+='</div>';

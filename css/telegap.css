@@ -1,5 +1,5 @@
 body {font-family: 'PT Sans Narrow', sans-serif; font-size:16px; margin:0; padding:0;-webkit-tap-highlight-color:blue;}
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}
+/*article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}*/
 /*article {border: 1px solid white;}*/
 div.menu{background:#124; position:absolute; top:20px; left:10px; border:1px solid #fff; padding:5px 10px; }
 a {color: #69C;	text-decoration: none; -webkit-tap-highlight-color:blue;}
@@ -8,7 +8,7 @@ h1 {font: 1.7em;line-height: 110%;color: #000;}
 h1, h2, h3 {color: #000;}
 h4 {border:none; padding:0;margin:0; color:#000;}
 p {	margin: 0 0 20px;}
-p.title {background:#eee; margin:0; padding:4px;}
+p.title {background:#eee; margin:0; padding:3px; border: 1px #DDD solid;}
 #pagewrap {max-width: 98%;margin: 0 auto;}
 .wrapper {overflow: hidden;}
 #menu {}
