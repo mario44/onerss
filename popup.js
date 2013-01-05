@@ -44,10 +44,10 @@ xmlhttp.send();
 		document.getElementById('popup_zapisz_LS_link').setAttribute('rel-title',title);
 		document.getElementById('popup_zapisz_LS_link').setAttribute('rel-link',link);
 		if (___self){
-		document.getElementById('popup_zapisz_link').setAttribute('rel-title',title);
-		document.getElementById('popup_zapisz_link').setAttribute('rel-link',link);
-		document.getElementById('popup_zapisz_link').setAttribute('rel-lokalizacja',lokalizacja);
-		document.getElementById('popup_zapisz_link').setAttribute('rel-sekcja',sekcja);
+			document.getElementById('popup_zapisz_link').setAttribute('rel-title',title);
+			document.getElementById('popup_zapisz_link').setAttribute('rel-link',link);
+			document.getElementById('popup_zapisz_link').setAttribute('rel-lokalizacja',lokalizacja);
+			document.getElementById('popup_zapisz_link').setAttribute('rel-sekcja',sekcja);
 		}
 		//document.getElementById('popup_info').innerText='Mobile='+mobile+' | '+navigator.userAgent.toLowerCase();
 		
