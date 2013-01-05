@@ -243,7 +243,7 @@ function koniec(){
 		for(var i in rssy[id]) {
 		//console.log(i);
 			var v = rssy[id][i].url;
-			var feedlimit=6;
+			var feedlimit=rssy[id][i].limit || 8;
 			var j=parseInt(i)+1;
 			uidiv(v,j);
 			var feedpointer=new google.feeds.Feed(v);
