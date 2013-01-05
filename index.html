@@ -4,9 +4,10 @@
   <meta charset="utf-8">
   <title>OneRSS 3.0</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
- 	<link rel="stylesheet" href="bootstrap.mi.css">
-	<link rel="stylesheet" href="telegap.css">
+ 	<!--link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'-->
+	<link href='css/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
+ 	<link rel="stylesheet" href="css/bootstrap.mi.css">
+	<link rel="stylesheet" href="css/telegap.css">
 <style>
 	article {
 		width: 47.95%;
@@ -23,10 +24,12 @@
 </style>		
     	
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
- 	<script type="text/javascript" charset="utf-8" src="rssone.list.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/kapiszon.js"></script>
+ 	<script type="text/javascript" charset="utf-8" src="js/rssone.list.js"></script>
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
- 	<script type="text/javascript" charset="utf-8" src="telegap.js"></script>
- 	<script type="text/javascript" charset="utf-8" src="popup.js"></script>
+ 	<script type="text/javascript" charset="utf-8" src="js/telegap.js"></script>
+ 	<script type="text/javascript" charset="utf-8" src="js/popup.js"></script>
+ 	
  	
 <script type="text/javascript" charset="utf-8">
 var ___moje='eede2de857491ec7';
@@ -37,89 +40,10 @@ var menuOpen=false;
 
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-
-		// device.platform device.uuid
-		try {
-			if (device.uuid) {document.getElementById('infotest').innerHTML=device.platform+'<br />'+device.uuid;}
-			}
-		catch(err) {
-			onDeviceReady();
-			}
-	
+		try {if (device.uuid) {document.getElementById('infotest').innerHTML=device.platform+'<br />'+device.uuid;}	}
+		catch(err) {onDeviceReady();}
     }
 
-function czytajID(){
-	var id=window.localStorage.getItem('__id__1') || '0';
-	if (id==='undefined') id='0';
-	return id;
-}
-
-function zapiszID(id){
-	window.localStorage.setItem('__id__1',id);
-	//document.getElementById('test').innerHTML+='  Z='+opiszID();
-}
-
-function moveID(kier){
-	var id1=window.localStorage.getItem('__id__1') || '0';
-	var id2=window.localStorage.getItem('__id__2') || '0';
-	var id3=window.localStorage.getItem('__id__3') || '0';
-	if (id1==='undefined') id1='0';
-	if (id2==='undefined') id2='0';
-	if (id3==='undefined') id3='0';
-	
-//console.log('move= '+kier+'='+id1+' '+id2+' '+id3)	
-
-	if (kier>0){
-		window.localStorage.setItem('__id__1',id3);
-		window.localStorage.setItem('__id__2',id1);
-		window.localStorage.setItem('__id__3',id2);
-	}	
-	if (kier<0){
-		window.localStorage.setItem('__id__1',id2);
-		window.localStorage.setItem('__id__2',id3);
-		window.localStorage.setItem('__id__3',id1);
-	}
-	//document.getElementById('test').innerHTML+='  M='+kier+'='+opiszID();
-}
-
-   	function gonext() {
-		var idmax=rssy.length;
-		var id=czytajID();
-		id++;
-		if (id>=idmax) id=0;
-		zapiszID(id);
-		rssfeedsetup(id);
-	}
-   	function goback() {
-		var idmax=rssy.length-1;
-		var id=czytajID();
-		id--;
-		if (id<0) id=idmax;
-		zapiszID(id);
-		rssfeedsetup(id);
-	}
-
-   	function goforwad() {
-		document.getElementById("menu").style.display="none";
-		zapal();
-		window.scrollTo(0,0);
-		onMenuKeyDown();
-	}
-	
-   	function goback___()   {
-		document.getElementById("menu").style.display="none";
-		zapal();
-		window.scrollTo(0,0);
-		onBackKeyDown();
-	}
-
-function koniec(){
-	try  {navigator.app.exitApp();}
-	catch(err) {
-	  window.scrollTo(0,0);
-	  }
-	
-}
 	
     function onDeviceReady() {
 		try {if (device.uuid == ___moje) ___self=true;}
@@ -205,7 +129,79 @@ function koniec(){
 		else          {document.getElementById("menu").style.display="block";zgas();menuOpen=true;}	
     }
     
-    
+ function czytajID(){
+	var id=window.localStorage.getItem('__id__1') || '0';
+	if (id==='undefined') id='0';
+	return id;
+}
+
+function zapiszID(id){
+	window.localStorage.setItem('__id__1',id);
+	//document.getElementById('test').innerHTML+='  Z='+opiszID();
+}
+
+function moveID(kier){
+	var id1=window.localStorage.getItem('__id__1') || '0';
+	var id2=window.localStorage.getItem('__id__2') || '0';
+	var id3=window.localStorage.getItem('__id__3') || '0';
+	if (id1==='undefined') id1='0';
+	if (id2==='undefined') id2='0';
+	if (id3==='undefined') id3='0';
+	
+//console.log('move= '+kier+'='+id1+' '+id2+' '+id3)	
+
+	if (kier>0){
+		window.localStorage.setItem('__id__1',id3);
+		window.localStorage.setItem('__id__2',id1);
+		window.localStorage.setItem('__id__3',id2);
+	}	
+	if (kier<0){
+		window.localStorage.setItem('__id__1',id2);
+		window.localStorage.setItem('__id__2',id3);
+		window.localStorage.setItem('__id__3',id1);
+	}
+	//document.getElementById('test').innerHTML+='  M='+kier+'='+opiszID();
+}
+
+   	function gonext() {
+		var idmax=rssy.length;
+		var id=czytajID();
+		id++;
+		if (id>=idmax) id=0;
+		zapiszID(id);
+		rssfeedsetup(id);
+	}
+   	function goback() {
+		var idmax=rssy.length-1;
+		var id=czytajID();
+		id--;
+		if (id<0) id=idmax;
+		zapiszID(id);
+		rssfeedsetup(id);
+	}
+
+   	function goforwad() {
+		document.getElementById("menu").style.display="none";
+		zapal();
+		window.scrollTo(0,0);
+		onMenuKeyDown();
+	}
+	
+   	function goback___()   {
+		document.getElementById("menu").style.display="none";
+		zapal();
+		window.scrollTo(0,0);
+		onBackKeyDown();
+	}
+
+function koniec(){
+	try  {navigator.app.exitApp();}
+	catch(err) {
+	  window.scrollTo(0,0);
+	  }
+	
+}
+   
     
 	function uid(t){
 		var suma=0;
