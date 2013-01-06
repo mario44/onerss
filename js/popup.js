@@ -204,6 +204,7 @@ function viewConfig(){
 		if (czas==0) czas=9999;
 		if (czas) {
 		//console.log(czas);
+			kasuj_czas();
 			localStorage.setItem('czas',czas);
 			location.reload();
 		}

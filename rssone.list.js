@@ -103,13 +103,20 @@ rssy[x].push({title:'ZUT aktualności' ,url:'http://www.zut.edu.pl/rssfeed/',lim
 rssy[x].push({title:'ZUT studenci' ,url:'http://www.zut.edu.pl/rssfeed-studenci',limit:5,color:'#f8f8da'});	
 rssy[x].push({title:'ZUT pracownicy' ,url:'http://www.zut.edu.pl/rssfeed-pracownicy',limit:5,color:'#f8f8da'});	
 
-//rssy[x].push({title:'' ,url:'',limit:9});	
-//rssy[x].push({title:'' ,url:'',limit:9});	
-//rssy[x].push({title:'' ,url:'',limit:9});	
 
-// TEST
-//x++; rssy[x]=[];		sekcje[x]='Test';	kolory[x]='#ff0';
-//rssy[x].push({title:'Aktualności' ,url:'http://www.wi.zut.edu.pl/aktualnosci?format=feed&type=atom',limit:4,color:'#f8f8fa'});	
+// Zapas
+x++; rssy[x]=[];		sekcje[x]='Zapas';	kolory[x]='#39b';
+rssy[x].push({title:'Wyborcza.biz' ,url:'http://wyborcza.biz/pub/rss/wyborcza_biz_wiadomosci.htm',limit:10});
+rssy[x].push({title:'PulsBiznesu' ,url:'http://www.pb.pl/atom',limit:10});
+rssy[x].push({title:'YankoDesign' ,url:'http://feeds.feedburner.com/yankodesign',limit:10});
+rssy[x].push({title:'TrenDir' ,url:'http://www.trendir.com/atom.xml',limit:10});
+
+//rssy[x].push({title:'' ,url:'',limit:10});
+//rssy[x].push({title:'' ,url:'',limit:10});
+
+
+//console.log(rssy);
+
 
 
 // [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]

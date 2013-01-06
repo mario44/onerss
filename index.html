@@ -9,17 +9,25 @@
  	<link rel="stylesheet" href="css/bootstrap.mi.css">
 	<link rel="stylesheet" href="css/telegap.css">
 <style>
+
 	article {
-		width: 47.95%;
+		width: 30.95%;
 		float: left;
 		margin: 1%;
 	}
-@media (max-width:979px){
+	
+@media (max-width:1279px){
+	article {
+		width: 47.95%;
+	}
+}	
+	
+@media (max-width:799px){
 	article {
 		width: 100%;
 		float: none;
 		margin: 0;
-	}
+	}	
 }
 </style>		
     	
@@ -359,12 +367,13 @@ function koniec(){
   	<button onClick="pokazFEED(0);" class="btn btn-info">Szczecin</button>
   	<button onClick="pokazFEED(1);" class="btn btn-info">Wiadomosci</button>
   	<button onClick="pokazFEED(2);" class="btn btn-inverse">Portale</button>
-  	<button onClick="pokazFEED(3);" class="btn btn-primary">InfoTech</button>
+  	<button onClick="pokazFEED(3);" class="btn btn-info">InfoTech</button>
   	<button onClick="pokazFEED(4);" class="btn btn-primary">Dzone</button>
   	<button onClick="pokazFEED(5);" class="btn btn-primary">WebDev</button>
   	<button onClick="pokazFEED(6);" class="btn btn-primary">Code</button>
   	<button onClick="pokazFEED(7);" class="btn btn-inverse">Allegro</button>	
   	<button onClick="pokazFEED(8);" class="btn btn-success">WIZUT</button>
+  	<button onClick="pokazFEED(9);" class="btn btn-inverse">Zapas</button>
  	<button onClick="viewInfo();"   class="btn btn-warning">InfoSzczecin</button>	
  	<!--button onClick="deviceInfo();" class="btn btn-warning">device Info</button-->
 	 &nbsp;   &nbsp;  
