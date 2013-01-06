@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <title>OneRSS 3.0</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
  	<!--link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'-->
 	<link href='css/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
  	<link rel="stylesheet" href="css/bootstrap.mi.css">
@@ -22,7 +22,7 @@
 	}
 }	
 	
-@media (max-width:799px){
+@media (max-width:599px){
 	article {
 		width: 100%;
 		float: none;
@@ -382,6 +382,7 @@ function koniec(){
 		<div class="batony" id="strefa_czasu">
 		<button onClick="zaznacz_czas();"            class="h btn btn-mini btn-primary" id="zaznacz_czas" >0</button>
 		<button onClick="ustawCzas(this);" rel="6"   class="h btn btn-mini btn-inverse" id="h6"   title="do 6 godzin"> 6h </button> 
+		<button onClick="ustawCzas(this);" rel="3"   class="h btn btn-mini btn-inverse" id="h3"   title="do 3 godzin"> 3h </button> 
 		<button onClick="ustawCzas(this);" rel="12"  class="h btn btn-mini btn-inverse" id="h12"  title="do 12 godzin"> 12h </button> 
 		<button onClick="ustawCzas(this);" rel="24"  class="h btn btn-mini btn-inverse" id="h24"  title="ostatnia doba"> 1d </button> 
 		<button onClick="ustawCzas(this);" rel="72"  class="h btn btn-mini btn-inverse" id="h72"  title="ostatnie 3 dni"> 3d </button> 
