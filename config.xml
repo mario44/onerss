@@ -6,35 +6,26 @@
         version   = "3.0.1">
 
 
-    <name>ZnakZorro-OneRSS</name>
+    <name>OneRSS</name>
 
     <description>
         OneRss powered by PhoneGap 
     </description>
 
-    <author href="http://zszczech.zut.edu.pl/git" email="zs@g.pl">
-        ZnakZorro
+    <author href="http://zszczech.zut.edu.pl/git" email="abc@poczta.to">
+        one
     </author>
     <preference name="phonegap-version" value="2.2.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
 	
-<icon src="pliki/icon-72.png" />
-<icon src="pliki/icon-36.png" gap:platform="android" gap:density="ldpi" />
-<icon src="pliki/icon-72.png" gap:platform="android" gap:density="mdpi" />
-<icon src="pliki/icon-144.png" gap:platform="android" gap:density="hdpi" />
-<icon src="pliki/icon-144.png" gap:platform="android" gap:density="xhdpi" />
-    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="pliki/onerss.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="pliki/onerss.png" gap:platform="android" gap:density="xhdpi" />
 
 
 
 
 <access origin="*" onlyInBrowser="true" />
 <preference name="stay-in-webview" value="false" />
-<preference name="splash-screen-duration" value="1000" />	
+	
 
 </widget>
