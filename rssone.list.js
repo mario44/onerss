@@ -84,8 +84,10 @@ rssy[x].push({title:'dailyjs',url:'http://feeds.feedburner.com/dailyjs',limit:6,
 // Allegro
 x++; rssy[x]=[];		sekcje[x]='Allegro';	kolory[x]='#CDCD00';
 rssy[x].push({title:'WOSP' ,url:'http://aukcje.wosp.org.pl/listing?rss=1&searchInNewest=1',limit:50});	
-rssy[x].push({title:'Kamadu' ,url:'http://allegro.pl/rss.php/user?uid=3561416',limit:20});	
-rssy[x].push({title:'Nex-3' ,url:'http://allegro.pl/rss.php?feed=search&category=0&change_view=1&distance=1&listing_interval=7&listing_sel=2&location_radio=1&offer_type=0&order=t&pay=0&selected_country=1&shippingTime=0&state=0&string=sony+nex-3+body+-deki%2A&view=gtext',limit:10});	
+rssy[x].push({title:'Kamadu' ,url:'http://allegro.pl/rss.php/user?uid=3561416',limit:20});
+
+rssy[x].push({title:'Ainol' ,url:'http://allegro.pl/rss.php?feed=search&sg=0&string=ainol',limit:50});	
+
 rssy[x].push({title:'NEX3-16mm' ,url:'http://allegro.pl/rss.php?feed=search&category=89958&string=16mm',limit:20});	
 rssy[x].push({title:'Led Power' ,url:'http://allegro.pl/rss.php?feed=search&category=67252&string=led+power',limit:10});	
 rssy[x].push({title:'FotoAlbum' ,url:'http://allegro.pl/rss.php?feed=search&category=0&change_view=Poka%C5%BC%C2%A0%3E&distance=1&listing_interval=7&listing_sel=2&offer_type=0&order=t&postcode_enabled=0&price_from=30&price_to=70&state=0&string=%28fotoalbum+fotoksi%C4%85%C5%BCka%29&view=gtext',limit:10});	
