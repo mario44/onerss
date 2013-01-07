@@ -29,6 +29,7 @@
 		margin: 0;
 	}	
 }
+#infotest {display:block;}
 </style>		
     	
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -37,7 +38,7 @@
  	<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
  	<script type="text/javascript" charset="utf-8" src="js/telegap.js"></script>
  	<script type="text/javascript" charset="utf-8" src="js/popup.js"></script>
- 	
+ 	<script type="text/javascript" charset="utf-8" src="js/accelerometer.js"></script>
  	
 <script type="text/javascript" charset="utf-8">
 var ___moje='eede2de857491ec7';
@@ -90,47 +91,19 @@ var watchID = null;
 			}
 		// --font	
 		
-	startWatch();	
+	startWatch();
 		
     }
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
-    function startWatch() {
-        var options = { frequency: 2000 };
-		try {watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);}
-		catch(er){}
-    }
-
-    // Stop watching the acceleration
-    function stopWatch() {
-        if (watchID) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
-    }
-
-    // onSuccess: Get a snapshot of the current acceleration
-    function onSuccess(acceleration) {
-		if (acceleration){
-			if (acceleration.y > 6)  gonext();
-			if (acceleration.y < -6) goback();
-			//acceleration.timestamp
-		}
-    }
-
-    // onError: Failed to get the acceleration
-    function onError() {
-        //alert('onError!');
-    }
-
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
    
     function onResume() {
-		document.getElementById('test').innerHTML='onResume<br />';
+		startWatch();
+		//document.getElementById('test').innerHTML='onResume<br />';
     }
 	
     function onPause() {
-		document.getElementById('test').innerHTML='onPause<br />';
+		stopWatch();
+		//document.getElementById('test').innerHTML='onPause<br />';
     }
 	
     function onOnline() {
@@ -147,7 +120,7 @@ var watchID = null;
 		);
 		///////////
 		
-		document.getElementById('test').innerHTML='onOffline<br />';
+		//document.getElementById('test').innerHTML='onOffline<br />';
 		var id=czytajID();
 		moveID(-1);
 		rssfeedsetup(id);

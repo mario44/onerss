@@ -35,6 +35,6 @@
 
 <access origin="*" onlyInBrowser="true" />
 <preference name="stay-in-webview" value="false" />
-
+<preference name="splash-screen-duration" value="1000" />	
 
 </widget>
