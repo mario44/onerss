@@ -5,7 +5,7 @@ var watchLastZ=0;
 
 
     function startWatch() {
-        var options = { frequency: 2000 };
+        var options = { frequency: 5000 };
 		try {watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);}
 		catch(er){}
     }
@@ -21,12 +21,14 @@ var watchLastZ=0;
     // onSuccess: Get a snapshot of the current acceleration
     function onSuccess(acceleration) {
 		if (acceleration){
+			/*
 			var deltaX=acceleration.x - watchLastX;
 			var deltaY=acceleration.y - watchLastY;
 			var deltaZ=acceleration.z - watchLastZ;
 			var suma=deltaY+deltaZ;
 			watchLastY = acceleration.y;
-			$('#infotest').innerHTML=' :x:'+deltaX+' :y:'+deltaY+' :z:'+deltaZ+' :s:'+suma;
+			*/
+			//$('#infotest').innerHTML=' :x:'+deltaX+' :y:'+deltaY+' :z:'+deltaZ+' :s:'+suma;
 			if (acceleration.y < -3) {goback(); return;}
 			if (acceleration.y > 9)  {gonext(); return;}
 			//acceleration.timestamp
